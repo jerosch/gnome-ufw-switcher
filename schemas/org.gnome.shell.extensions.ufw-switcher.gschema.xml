@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <enum id="org.gnome.shell.extensions.ufw-switcher.Mode">
+    <value nick="home" value="0"/>
+    <value nick="office" value="1"/>
+    <value nick="public" value="2"/>
+  </enum>
+
+  <schema id="org.gnome.shell.extensions.ufw-switcher"
+          path="/org/gnome/shell/extensions/ufw-switcher/">
+
+    <!-- Gewünschter Gesamtzustand: Firewall ein/aus -->
+    <key name="enabled" type="b">
+      <default>true</default>
+      <summary>Firewall aktiv</summary>
+    </key>
+
+    <!-- Aktives Profil -->
+    <key name="mode" enum="org.gnome.shell.extensions.ufw-switcher.Mode">
+      <default>'home'</default>
+      <summary>Aktives Firewall-Profil (home, office, public)</summary>
+    </key>
+
+    <!--
+      Profile als JSON:
+      {
+        "defaults": {"incoming": "deny|allow|reject", "outgoing": "allow|deny"},
+        "rules": [
+          {
+            "action":    "allow|deny|reject",
+            "direction": "in|out",
+            "interface": "",            # z.B. wlan0 (optional)
+            "from":      "",            # z.B. 192.168.0.0/24 (optional)
+            "to":        "",            # optional
+            "proto":     "",            # tcp|udp (optional)
+            "port":      "",            # z.B. 22 oder 80:90 (optional)
+            "comment":   ""
+          }
+        ]
+      }
+    -->
+    <key name="profile-home" type="s">
+      <default><![CDATA['{"defaults":{"incoming":"allow","outgoing":"allow"},"rules":[]}']]></default>
+      <summary>Profil "Zuhause" (voll vertrauenswürdig: alles erlaubt)</summary>
+    </key>
+
+    <key name="profile-office" type="s">
+      <default><![CDATA['{"defaults":{"incoming":"reject","outgoing":"allow"},"rules":[{"action":"allow","direction":"in","interface":"","from":"10.0.0.0/8","to":"","proto":"tcp","port":"22","comment":"SSH aus dem Büronetz"},{"action":"allow","direction":"in","interface":"","from":"10.0.0.0/8","to":"","proto":"tcp","port":"445","comment":"SMB-Dateifreigaben"},{"action":"allow","direction":"in","interface":"","from":"","to":"","proto":"udp","port":"5353","comment":"mDNS"}]}']]></default>
+      <summary>Profil "Büro"</summary>
+    </key>
+
+    <key name="profile-public" type="s">
+      <default><![CDATA['{"defaults":{"incoming":"deny","outgoing":"allow"},"rules":[]}']]></default>
+      <summary>Profil "Öffentlich" (alles eingehende blockiert)</summary>
+    </key>
+
+    <!-- Intervall für Status-Aktualisierung in Sekunden -->
+    <key name="refresh-interval" type="i">
+      <default>30</default>
+      <range min="10" max="600"/>
+      <summary>Status-Abstand (Sekunden)</summary>
+    </key>
+  </schema>
+</schemalist>

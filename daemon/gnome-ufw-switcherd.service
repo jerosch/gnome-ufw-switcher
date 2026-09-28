@@ -1,0 +1,13 @@
+[Unit]
+Description=UFW Switcher — privilegierter Firewall-Hilfsdienst (D-Bus: org.gnome.UfwSwitcher)
+Documentation=https://github.com/schneiderr/gnome-ufw-switcher
+After=dbus.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/lib/gnome-ufw-switcher/ufw_switcherd.py
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

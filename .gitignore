@@ -1,0 +1,7 @@
+build/
+__pycache__/
+*.pyc
+*.bak
+*.original
+node_modules/
+schemas/gschemas.compiled

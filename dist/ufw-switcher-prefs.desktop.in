@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Firewall-Regeln (UFW)
+Comment=Firewall-Profile und Regeln für UFW Switcher bearbeiten
+Exec=gnome-extensions prefs @UUID@
+Icon=security-high
+Terminal=false
+Categories=Settings;System;
+Keywords=firewall;ufw;security;regeln;rules;profil;

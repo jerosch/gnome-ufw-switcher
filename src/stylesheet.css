@@ -1,0 +1,6 @@
+/* UFW Switcher — eigene Styles (minimal) */
+
+/* Statuszeile im Quick-Settings-Menü dezent absetzen */
+.ufw-switcher-status {
+  padding: 4px 12px;
+}
