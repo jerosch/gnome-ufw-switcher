@@ -7,3 +7,6 @@ __pycache__/
 *.original
 node_modules/
 schemas/gschemas.compiled
+
+# nested AUR submission clone (separate repository)
+/gnome-shell-extension-ufw-switcher/
