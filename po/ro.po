@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: ro\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Paravan de protecție"
+
+msgid "Home"
+msgstr "Acasă"
+
+msgid "Office"
+msgstr "Birou"
+
+msgid "Public"
+msgstr "Public"
+
+msgid "Edit Firewall Rules…"
+msgstr "Editează regulile paravanului…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Demonul nu este conectat — așteptați un moment"
+
+msgid "Daemon unreachable: %s"
+msgstr "Demonul este indisponibil: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Comutarea paravanului a eșuat"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Nu se poate aplica profilul „%s”"
+
+msgid "Daemon unreachable"
+msgstr "Demon indisponibil"
+
+msgid "Disabled"
+msgstr "Dezactivat"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Stare: %s · Profil: %s"
+
+msgid "Active"
+msgstr "Activ"
+
+msgid "Inactive"
+msgstr "Inactiv"
+
+msgid "Allow"
+msgstr "Permite"
+
+msgid "Deny"
+msgstr "Refuză"
+
+msgid "Reject"
+msgstr "Respinge"
+
+msgid "Inbound"
+msgstr "De intrare"
+
+msgid "Outgoing"
+msgstr "De ieșire"
+
+msgid "Any"
+msgstr "Oricare"
+
+msgid "deny (block)"
+msgstr "refuză (blochează)"
+
+msgid "allow"
+msgstr "permite"
+
+msgid "reject"
+msgstr "respinge"
+
+msgid "on %s"
+msgstr "pe %s"
+
+msgid "from %s"
+msgstr "de la %s"
+
+msgid "to %s"
+msgstr "către %s"
+
+msgid "port %s"
+msgstr "portul %s"
+
+msgid "Edit Rule"
+msgstr "Editează regula"
+
+msgid "New Rule"
+msgstr "Regulă nouă"
+
+msgid "Cancel"
+msgstr "Anulează"
+
+msgid "Save"
+msgstr "Salvează"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Adrese și porturi (opțional)"
+
+msgid "Interface"
+msgstr "Interfață"
+
+msgid "Source (from)"
+msgstr "Sursă (from)"
+
+msgid "Destination (to)"
+msgstr "Destinație (to)"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Comment"
+msgstr "Comentariu"
+
+msgid "General"
+msgstr "Generale"
+
+msgid "Firewall active"
+msgstr "Paravan activ"
+
+msgid "Active Profile"
+msgstr "Profil activ"
+
+msgid "Status (ufw)"
+msgstr "Stare (ufw)"
+
+msgid "Open gufw"
+msgstr "Deschide gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Editați regulile individuale complexe extern (notă: aplicarea unui profil va suprascrie regulile străine)"
+
+msgid "Launch"
+msgstr "Lansează"
+
+msgid "Could not launch gufw: %s"
+msgstr "Nu s-a putut lansa gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Modificările de reguli din paginile de profil se aplică doar prin „Aplică profilul”. Fiecare modificare a paravanului necesită autorizare PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "Nu s-a putut activa paravanul: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Nu s-a putut dezactiva paravanul: %s"
+
+msgid "Active (%s)"
+msgstr "Activ (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Indisponibil: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Profilul „%s” a fost aplicat"
+
+msgid "Apply failed: %s"
+msgstr "Aplicarea a eșuat: %s"
+
+msgid "Default Policies"
+msgstr "Politici implicite"
+
+msgid "Incoming"
+msgstr "De intrare"
+
+msgid "Rules"
+msgstr "Reguli"
+
+msgid "Add Rule"
+msgstr "Adaugă regulă"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Aplică profilul „%s” acum"

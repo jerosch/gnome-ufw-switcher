@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: ja\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "ファイアウォール"
+
+msgid "Home"
+msgstr "ホーム"
+
+msgid "Office"
+msgstr "オフィス"
+
+msgid "Public"
+msgstr "パブリック"
+
+msgid "Edit Firewall Rules…"
+msgstr "ファイアウォールルールを編集…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "デーモンに接続できません — しばらくお待ちください"
+
+msgid "Daemon unreachable: %s"
+msgstr "デーモンに到達できません: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "ファイアウォールの切り替えに失敗しました"
+
+msgid "Cannot apply profile “%s”"
+msgstr "プロファイル「%s」を適用できません"
+
+msgid "Daemon unreachable"
+msgstr "デーモンに到達できません"
+
+msgid "Disabled"
+msgstr "無効"
+
+msgid "Status: %s · Profile: %s"
+msgstr "状態: %s · プロファイル: %s"
+
+msgid "Active"
+msgstr "有効"
+
+msgid "Inactive"
+msgstr "無効"
+
+msgid "Allow"
+msgstr "許可"
+
+msgid "Deny"
+msgstr "拒否"
+
+msgid "Reject"
+msgstr "破棄"
+
+msgid "Inbound"
+msgstr "受信"
+
+msgid "Outgoing"
+msgstr "送信"
+
+msgid "Any"
+msgstr "すべて"
+
+msgid "deny (block)"
+msgstr "拒否 (ブロック)"
+
+msgid "allow"
+msgstr "許可"
+
+msgid "reject"
+msgstr "破棄"
+
+msgid "on %s"
+msgstr "%s 上で"
+
+msgid "from %s"
+msgstr "%s から"
+
+msgid "to %s"
+msgstr "%s へ"
+
+msgid "port %s"
+msgstr "ポート %s"
+
+msgid "Edit Rule"
+msgstr "ルールを編集"
+
+msgid "New Rule"
+msgstr "新しいルール"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Addresses and Ports (optional)"
+msgstr "アドレスとポート (任意)"
+
+msgid "Interface"
+msgstr "インターフェース"
+
+msgid "Source (from)"
+msgstr "送信元 (from)"
+
+msgid "Destination (to)"
+msgstr "送信先 (to)"
+
+msgid "Port"
+msgstr "ポート"
+
+msgid "Comment"
+msgstr "コメント"
+
+msgid "General"
+msgstr "一般"
+
+msgid "Firewall active"
+msgstr "ファイアウォール有効"
+
+msgid "Active Profile"
+msgstr "アクティブなプロファイル"
+
+msgid "Status (ufw)"
+msgstr "状態 (ufw)"
+
+msgid "Open gufw"
+msgstr "gufw を開く"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "複雑な個別ルールは外部で編集してください (注意: プロファイルを適用すると外部のルールは上書きされます)"
+
+msgid "Launch"
+msgstr "起動"
+
+msgid "Could not launch gufw: %s"
+msgstr "gufw を起動できませんでした: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "プロファイルページでのルール変更は「プロファイルを適用」でのみ有効になります。ファイアウォールの変更には毎回 PolicyKit による認証が必要です。"
+
+msgid "Could not enable firewall: %s"
+msgstr "ファイアウォールを有効にできませんでした: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "ファイアウォールを無効にできませんでした: %s"
+
+msgid "Active (%s)"
+msgstr "有効 (%s)"
+
+msgid "Unreachable: %s"
+msgstr "到達できません: %s"
+
+msgid "Profile “%s” applied"
+msgstr "プロファイル「%s」を適用しました"
+
+msgid "Apply failed: %s"
+msgstr "適用に失敗しました: %s"
+
+msgid "Default Policies"
+msgstr "既定のポリシー"
+
+msgid "Incoming"
+msgstr "受信"
+
+msgid "Rules"
+msgstr "ルール"
+
+msgid "Add Rule"
+msgstr "ルールを追加"
+
+msgid "Apply “%s” Profile Now"
+msgstr "プロファイル「%s」を今すぐ適用"

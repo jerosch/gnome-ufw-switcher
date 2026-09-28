@@ -4,7 +4,10 @@ import GLib from 'gi://GLib';
 import Clutter from 'gi://Clutter';
 import St from 'gi://St';
 
-import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
+import {
+    Extension,
+    gettext as _,
+} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import {
@@ -17,9 +20,9 @@ const DBUS_PATH = '/org/gnome/UfwSwitcher';
 const DBUS_IFACE = 'org.gnome.UfwSwitcher';
 
 const MODES = [
-    {id: 'home', label: 'Zuhause', icon: 'user-home-symbolic'},
-    {id: 'office', label: 'Büro', icon: 'network-server-symbolic'},
-    {id: 'public', label: 'Öffentlich', icon: 'network-workgroup-symbolic'},
+    {id: 'home', label: 'Home', icon: 'user-home-symbolic'},
+    {id: 'office', label: 'Office', icon: 'network-server-symbolic'},
+    {id: 'public', label: 'Public', icon: 'network-workgroup-symbolic'},
 ];
 
 function modeInfo(id) {
@@ -38,7 +41,7 @@ class FirewallIndicator extends SystemIndicator {
         this._status = {enabled: false, raw: ''};
         this._timerId = 0;
 
-        // Panel-Icon
+        // Panel icon
         this._panelIcon = new St.Icon({
             style_class: 'system-status-icon',
             icon_name: 'security-high-symbolic',
@@ -46,11 +49,11 @@ class FirewallIndicator extends SystemIndicator {
         this.add_child(this._panelIcon);
         this.visible = true;
 
-        // Quick-Settings-Toggle: Klick = Firewall ein/aus,
-        // Menü-Pfeil = Profilwahl
+        // Quick settings toggle: click = firewall on/off,
+        // menu arrow = profile selection
         this._toggle = new QuickMenuToggle({
             toggle_mode: true,
-            title: 'Firewall',
+            title: _('Firewall'),
             icon_name: 'security-high-symbolic',
         });
         this.quickSettingsItems.push(this._toggle);
@@ -90,7 +93,7 @@ class FirewallIndicator extends SystemIndicator {
                 y_align: Clutter.ActorAlign.CENTER,
             }));
             item.add_child(new St.Label({
-                text: mode.label,
+                text: _(mode.label),
                 x_expand: true,
                 y_align: Clutter.ActorAlign.CENTER,
             }));
@@ -108,7 +111,7 @@ class FirewallIndicator extends SystemIndicator {
 
         menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
-        const editItem = new PopupMenu.PopupMenuItem('Firewall-Regeln bearbeiten…');
+        const editItem = new PopupMenu.PopupMenuItem(_('Edit Firewall Rules…'));
         editItem.connect('activate', () => this._extension.openPreferences());
         menu.addMenuItem(editItem);
 
@@ -121,7 +124,7 @@ class FirewallIndicator extends SystemIndicator {
         return new Promise((resolve, reject) => {
             const proxy = this._extension.dbusProxy;
             if (!proxy) {
-                reject(new Error('Daemon nicht verbunden'));
+                reject(new Error(_('Daemon not connected — please wait a moment')));
                 return;
             }
             proxy.call(method, params, Gio.DBusCallFlags.NONE, -1, null,
@@ -148,11 +151,11 @@ class FirewallIndicator extends SystemIndicator {
                 if (this._destroyed)
                     return;
                 this._status = {enabled: false, raw: ''};
-                this._updateUi(`Daemon nicht erreichbar: ${e.message}`);
+                this._updateUi(_('Daemon unreachable: %s').format(e.message));
             });
     }
 
-    // --- Aktionen ---------------------------------------------------------
+    // --- Actions ----------------------------------------------------------
 
     _onToggle() {
         if (this._busy)
@@ -165,10 +168,10 @@ class FirewallIndicator extends SystemIndicator {
                 this.refresh();
             })
             .catch(e => {
-                // Rückgängig machen (z. B. Polkit-Abbruch)
+                // Revert (e.g. PolicyKit cancelled)
                 if (this._toggle && !this._destroyed)
                     this._toggle.checked = !want;
-                this._notify('Firewall-Umschalten fehlgeschlagen', e.message);
+                this._notify(_('Failed to toggle firewall'), e.message);
             })
             .finally(() => {
                 this._busy = false;
@@ -183,13 +186,13 @@ class FirewallIndicator extends SystemIndicator {
         this._callAsync('ApplyProfile', new GLib.Variant('(s)', [profile]))
             .then(() => {
                 this._settings.set_string('mode', id);
-                // Modus-Auswahl impliziert Schutz: Firewall einschalten
+                // Selecting a mode implies protection: turn firewall on
                 this._settings.set_boolean('enabled', true);
                 this.refresh();
             })
             .catch(e => {
-                this._notify(`Profil „${modeInfo(id).label}“ nicht anwendbar`,
-                    e.message);
+                this._notify(_('Cannot apply profile “%s”')
+                    .format(_(modeInfo(id).label)), e.message);
             })
             .finally(() => {
                 this._busy = false;
@@ -221,12 +224,14 @@ class FirewallIndicator extends SystemIndicator {
         this._panelIcon.icon_name = icon;
 
         if (errorNote) {
-            this._toggle.subtitle = 'Daemon nicht erreichbar';
+            this._toggle.subtitle = _('Daemon unreachable');
             this._statusItem.label.text = errorNote;
         } else {
-            this._toggle.subtitle = enabled ? mode.label : 'Deaktiviert';
-            this._statusItem.label.text =
-                `Status: ${enabled ? 'Aktiv' : 'Inaktiv'} · Profil: ${mode.label}`;
+            this._toggle.subtitle = enabled
+                ? _(mode.label)
+                : _('Disabled');
+            this._statusItem.label.text = _('Status: %s · Profile: %s').format(
+                enabled ? _('Active') : _('Inactive'), _(mode.label));
         }
     }
 
@@ -259,8 +264,9 @@ class FirewallIndicator extends SystemIndicator {
             GLib.source_remove(this._timerId);
             this._timerId = 0;
         }
-        // Toggle hängt im Quick-Settings-Grid, nicht in diesem Container —
-        // explizit zerstören, sonst leakt er bei jedem Enable/Disable-Zyklus.
+        // The toggle lives in the quick settings grid, not in this
+        // container — destroy it explicitly or it leaks on every
+        // enable/disable cycle.
         this._toggle?.destroy();
         this._toggle = null;
         super.vfunc_destroy();
@@ -290,7 +296,7 @@ export default class UfwSwitcherExtension extends Extension {
                 try {
                     this.dbusProxy = Gio.DBusProxy.new_for_bus_finish(res);
                 } catch (e) {
-                    logError(e, 'UFW Switcher: Daemon nicht verbunden');
+                    logError(e, 'UFW Switcher: daemon not connected');
                     return;
                 }
                 this._changedId = this.dbusProxy.connect(

@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: zh_CN\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "防火墙"
+
+msgid "Home"
+msgstr "家庭"
+
+msgid "Office"
+msgstr "办公室"
+
+msgid "Public"
+msgstr "公共"
+
+msgid "Edit Firewall Rules…"
+msgstr "编辑防火墙规则…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "守护进程未连接 — 请稍候"
+
+msgid "Daemon unreachable: %s"
+msgstr "无法访问守护进程：%s"
+
+msgid "Failed to toggle firewall"
+msgstr "切换防火墙失败"
+
+msgid "Cannot apply profile “%s”"
+msgstr "无法应用配置文件“%s”"
+
+msgid "Daemon unreachable"
+msgstr "无法访问守护进程"
+
+msgid "Disabled"
+msgstr "已禁用"
+
+msgid "Status: %s · Profile: %s"
+msgstr "状态：%s · 配置文件：%s"
+
+msgid "Active"
+msgstr "活动"
+
+msgid "Inactive"
+msgstr "未活动"
+
+msgid "Allow"
+msgstr "允许"
+
+msgid "Deny"
+msgstr "拒绝"
+
+msgid "Reject"
+msgstr "驳回"
+
+msgid "Inbound"
+msgstr "入站"
+
+msgid "Outgoing"
+msgstr "出站"
+
+msgid "Any"
+msgstr "任意"
+
+msgid "deny (block)"
+msgstr "拒绝 (阻止)"
+
+msgid "allow"
+msgstr "允许"
+
+msgid "reject"
+msgstr "驳回"
+
+msgid "on %s"
+msgstr "在 %s 上"
+
+msgid "from %s"
+msgstr "来自 %s"
+
+msgid "to %s"
+msgstr "到 %s"
+
+msgid "port %s"
+msgstr "端口 %s"
+
+msgid "Edit Rule"
+msgstr "编辑规则"
+
+msgid "New Rule"
+msgstr "新建规则"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Addresses and Ports (optional)"
+msgstr "地址和端口（可选）"
+
+msgid "Interface"
+msgstr "接口"
+
+msgid "Source (from)"
+msgstr "来源 (from)"
+
+msgid "Destination (to)"
+msgstr "目标 (to)"
+
+msgid "Port"
+msgstr "端口"
+
+msgid "Comment"
+msgstr "备注"
+
+msgid "General"
+msgstr "常规"
+
+msgid "Firewall active"
+msgstr "防火墙已启用"
+
+msgid "Active Profile"
+msgstr "当前配置文件"
+
+msgid "Status (ufw)"
+msgstr "状态 (ufw)"
+
+msgid "Open gufw"
+msgstr "打开 gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "在外部编辑复杂的单条规则（注意：应用配置文件会覆盖外部规则）"
+
+msgid "Launch"
+msgstr "启动"
+
+msgid "Could not launch gufw: %s"
+msgstr "无法启动 gufw：%s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "配置文件页面上的规则更改只有通过“应用配置文件”才会生效。每次防火墙更改都需要 PolicyKit 授权。"
+
+msgid "Could not enable firewall: %s"
+msgstr "无法启用防火墙：%s"
+
+msgid "Could not disable firewall: %s"
+msgstr "无法禁用防火墙：%s"
+
+msgid "Active (%s)"
+msgstr "活动 (%s)"
+
+msgid "Unreachable: %s"
+msgstr "无法访问：%s"
+
+msgid "Profile “%s” applied"
+msgstr "已应用配置文件“%s”"
+
+msgid "Apply failed: %s"
+msgstr "应用失败：%s"
+
+msgid "Default Policies"
+msgstr "默认策略"
+
+msgid "Incoming"
+msgstr "入站"
+
+msgid "Rules"
+msgstr "规则"
+
+msgid "Add Rule"
+msgstr "添加规则"
+
+msgid "Apply “%s” Profile Now"
+msgstr "立即应用配置文件“%s”"

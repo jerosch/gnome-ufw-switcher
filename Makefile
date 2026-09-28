@@ -26,6 +26,8 @@ build:
 	cp src/extension.js src/prefs.js src/stylesheet.css build/
 	cp schemas/*.gschema.xml build/schemas/
 	glib-compile-schemas build/schemas/
+	python3 po/generate.py
+	cp -r locale build/
 
 install-user: build
 	install -d "$(EXT_DIR)"

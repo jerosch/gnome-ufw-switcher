@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: ru\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Брандмауэр"
+
+msgid "Home"
+msgstr "Домашний"
+
+msgid "Office"
+msgstr "Офис"
+
+msgid "Public"
+msgstr "Публичный"
+
+msgid "Edit Firewall Rules…"
+msgstr "Изменить правила брандмауэра…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Демон не подключён — подождите немного"
+
+msgid "Daemon unreachable: %s"
+msgstr "Демон недоступен: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Не удалось переключить брандмауэр"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Не удалось применить профиль «%s»"
+
+msgid "Daemon unreachable"
+msgstr "Демон недоступен"
+
+msgid "Disabled"
+msgstr "Отключён"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Состояние: %s · Профиль: %s"
+
+msgid "Active"
+msgstr "Активен"
+
+msgid "Inactive"
+msgstr "Неактивен"
+
+msgid "Allow"
+msgstr "Разрешить"
+
+msgid "Deny"
+msgstr "Запретить"
+
+msgid "Reject"
+msgstr "Отклонить"
+
+msgid "Inbound"
+msgstr "Входящие"
+
+msgid "Outgoing"
+msgstr "Исходящие"
+
+msgid "Any"
+msgstr "Любой"
+
+msgid "deny (block)"
+msgstr "запретить (блокировать)"
+
+msgid "allow"
+msgstr "разрешить"
+
+msgid "reject"
+msgstr "отклонить"
+
+msgid "on %s"
+msgstr "на %s"
+
+msgid "from %s"
+msgstr "из %s"
+
+msgid "to %s"
+msgstr "в %s"
+
+msgid "port %s"
+msgstr "порт %s"
+
+msgid "Edit Rule"
+msgstr "Изменить правило"
+
+msgid "New Rule"
+msgstr "Новое правило"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Адреса и порты (необязательно)"
+
+msgid "Interface"
+msgstr "Интерфейс"
+
+msgid "Source (from)"
+msgstr "Источник (from)"
+
+msgid "Destination (to)"
+msgstr "Назначение (to)"
+
+msgid "Port"
+msgstr "Порт"
+
+msgid "Comment"
+msgstr "Комментарий"
+
+msgid "General"
+msgstr "Основные"
+
+msgid "Firewall active"
+msgstr "Брандмауэр активен"
+
+msgid "Active Profile"
+msgstr "Активный профиль"
+
+msgid "Status (ufw)"
+msgstr "Состояние (ufw)"
+
+msgid "Open gufw"
+msgstr "Открыть gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Сложные отдельные правила редактируйте извне (примечание: применение профиля перезапишет чужие правила)"
+
+msgid "Launch"
+msgstr "Запустить"
+
+msgid "Could not launch gufw: %s"
+msgstr "Не удалось запустить gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Изменения правил на страницах профилей применяются только через «Применить профиль». Каждое изменение брандмауэра требует авторизации PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "Не удалось включить брандмауэр: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Не удалось отключить брандмауэр: %s"
+
+msgid "Active (%s)"
+msgstr "Активен (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Недоступно: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Профиль «%s» применён"
+
+msgid "Apply failed: %s"
+msgstr "Ошибка применения: %s"
+
+msgid "Default Policies"
+msgstr "Политики по умолчанию"
+
+msgid "Incoming"
+msgstr "Входящие"
+
+msgid "Rules"
+msgstr "Правила"
+
+msgid "Add Rule"
+msgstr "Добавить правило"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Применить профиль «%s» сейчас"

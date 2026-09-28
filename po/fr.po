@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: fr\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Pare-feu"
+
+msgid "Home"
+msgstr "Domicile"
+
+msgid "Office"
+msgstr "Bureau"
+
+msgid "Public"
+msgstr "Public"
+
+msgid "Edit Firewall Rules…"
+msgstr "Modifier les règles du pare-feu…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Démon non connecté — veuillez patienter"
+
+msgid "Daemon unreachable: %s"
+msgstr "Démon injoignable : %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Échec du basculement du pare-feu"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Impossible d'appliquer le profil « %s »"
+
+msgid "Daemon unreachable"
+msgstr "Démon injoignable"
+
+msgid "Disabled"
+msgstr "Désactivé"
+
+msgid "Status: %s · Profile: %s"
+msgstr "État : %s · Profil : %s"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "Inactive"
+msgstr "Inactif"
+
+msgid "Allow"
+msgstr "Autoriser"
+
+msgid "Deny"
+msgstr "Refuser"
+
+msgid "Reject"
+msgstr "Rejeter"
+
+msgid "Inbound"
+msgstr "Entrant"
+
+msgid "Outgoing"
+msgstr "Sortant"
+
+msgid "Any"
+msgstr "Tous"
+
+msgid "deny (block)"
+msgstr "refuser (bloquer)"
+
+msgid "allow"
+msgstr "autoriser"
+
+msgid "reject"
+msgstr "rejeter"
+
+msgid "on %s"
+msgstr "sur %s"
+
+msgid "from %s"
+msgstr "de %s"
+
+msgid "to %s"
+msgstr "vers %s"
+
+msgid "port %s"
+msgstr "port %s"
+
+msgid "Edit Rule"
+msgstr "Modifier la règle"
+
+msgid "New Rule"
+msgstr "Nouvelle règle"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Adresses et ports (facultatif)"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "Source (from)"
+msgstr "Source (from)"
+
+msgid "Destination (to)"
+msgstr "Destination (to)"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Comment"
+msgstr "Commentaire"
+
+msgid "General"
+msgstr "Général"
+
+msgid "Firewall active"
+msgstr "Pare-feu actif"
+
+msgid "Active Profile"
+msgstr "Profil actif"
+
+msgid "Status (ufw)"
+msgstr "État (ufw)"
+
+msgid "Open gufw"
+msgstr "Ouvrir gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Modifier les règles complexes en externe (note : l'application d'un profil écrasera les règles externes)"
+
+msgid "Launch"
+msgstr "Lancer"
+
+msgid "Could not launch gufw: %s"
+msgstr "Impossible de lancer gufw : %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Les modifications de règles sur les pages de profil ne prennent effet qu'avec « Appliquer le profil ». Chaque modification du pare-feu requiert une autorisation PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "Impossible d'activer le pare-feu : %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Impossible de désactiver le pare-feu : %s"
+
+msgid "Active (%s)"
+msgstr "Actif (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Injoignable : %s"
+
+msgid "Profile “%s” applied"
+msgstr "Profil « %s » appliqué"
+
+msgid "Apply failed: %s"
+msgstr "Échec de l'application : %s"
+
+msgid "Default Policies"
+msgstr "Règles par défaut"
+
+msgid "Incoming"
+msgstr "Entrantes"
+
+msgid "Rules"
+msgstr "Règles"
+
+msgid "Add Rule"
+msgstr "Ajouter une règle"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Appliquer le profil « %s » maintenant"

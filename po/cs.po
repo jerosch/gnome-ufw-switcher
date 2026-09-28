@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: cs\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Firewall"
+
+msgid "Home"
+msgstr "Domů"
+
+msgid "Office"
+msgstr "Kancelář"
+
+msgid "Public"
+msgstr "Veřejný"
+
+msgid "Edit Firewall Rules…"
+msgstr "Upravit pravidla firewallu…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Daemon není připojen — chvíli počkejte"
+
+msgid "Daemon unreachable: %s"
+msgstr "Daemon nedostupný: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Přepnutí firewallu selhalo"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Nelze použít profil „%s“"
+
+msgid "Daemon unreachable"
+msgstr "Daemon nedostupný"
+
+msgid "Disabled"
+msgstr "Zakázáno"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Stav: %s · Profil: %s"
+
+msgid "Active"
+msgstr "Aktivní"
+
+msgid "Inactive"
+msgstr "Neaktivní"
+
+msgid "Allow"
+msgstr "Povolit"
+
+msgid "Deny"
+msgstr "Zamítnout"
+
+msgid "Reject"
+msgstr "Odmítnout"
+
+msgid "Inbound"
+msgstr "Příchozí"
+
+msgid "Outgoing"
+msgstr "Odchozí"
+
+msgid "Any"
+msgstr "Libovolné"
+
+msgid "deny (block)"
+msgstr "zamítnout (zablokovat)"
+
+msgid "allow"
+msgstr "povolit"
+
+msgid "reject"
+msgstr "odmítnout"
+
+msgid "on %s"
+msgstr "na %s"
+
+msgid "from %s"
+msgstr "z %s"
+
+msgid "to %s"
+msgstr "do %s"
+
+msgid "port %s"
+msgstr "port %s"
+
+msgid "Edit Rule"
+msgstr "Upravit pravidlo"
+
+msgid "New Rule"
+msgstr "Nové pravidlo"
+
+msgid "Cancel"
+msgstr "Zrušit"
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Adresy a porty (volitelné)"
+
+msgid "Interface"
+msgstr "Rozhraní"
+
+msgid "Source (from)"
+msgstr "Zdroj (from)"
+
+msgid "Destination (to)"
+msgstr "Cíl (to)"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Comment"
+msgstr "Komentář"
+
+msgid "General"
+msgstr "Obecné"
+
+msgid "Firewall active"
+msgstr "Firewall aktivní"
+
+msgid "Active Profile"
+msgstr "Aktivní profil"
+
+msgid "Status (ufw)"
+msgstr "Stav (ufw)"
+
+msgid "Open gufw"
+msgstr "Otevřít gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Složité jednotlivé regule upravte externě (poznámka: použití profilu přepíše cizí pravidla)"
+
+msgid "Launch"
+msgstr "Spustit"
+
+msgid "Could not launch gufw: %s"
+msgstr "Nelze spustit gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Změny pravidel na stránkách profilu se projeví až pomocí „Použít profil“. Každá změna firewallu vyžaduje autorizaci PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "Nelze zapnout firewall: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Nelze vypnout firewall: %s"
+
+msgid "Active (%s)"
+msgstr "Aktivní (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Nedostupné: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Profil „%s“ použit"
+
+msgid "Apply failed: %s"
+msgstr "Použití selhalo: %s"
+
+msgid "Default Policies"
+msgstr "Výchozí zásady"
+
+msgid "Incoming"
+msgstr "Příchozí"
+
+msgid "Rules"
+msgstr "Pravidla"
+
+msgid "Add Rule"
+msgstr "Přidat pravidlo"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Použít profil „%s“ nyní"

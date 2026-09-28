@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: el\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Τείχος προστασίας"
+
+msgid "Home"
+msgstr "Σπίτι"
+
+msgid "Office"
+msgstr "Γραφείο"
+
+msgid "Public"
+msgstr "Δημόσιο"
+
+msgid "Edit Firewall Rules…"
+msgstr "Επεξεργασία κανόνων τείχους…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Ο δαίμονας δεν είναι συνδεδεμένος — περιμένετε μια στιγμή"
+
+msgid "Daemon unreachable: %s"
+msgstr "Ο δαίμονας είναι μη προσβάσιμος: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Η εναλλαγή του τείχους απέτυχε"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Δεν είναι δυνατή η εφαρμογή του προφίλ «%s»"
+
+msgid "Daemon unreachable"
+msgstr "Δαίμονας μη προσβάσιμος"
+
+msgid "Disabled"
+msgstr "Απενεργοποιημένο"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Κατάσταση: %s · Προφίλ: %s"
+
+msgid "Active"
+msgstr "Ενεργό"
+
+msgid "Inactive"
+msgstr "Ανενεργό"
+
+msgid "Allow"
+msgstr "Να επιτρέπεται"
+
+msgid "Deny"
+msgstr "Άρνηση"
+
+msgid "Reject"
+msgstr "Απόρριψη"
+
+msgid "Inbound"
+msgstr "Εισερχόμενα"
+
+msgid "Outgoing"
+msgstr "Εξερχόμενα"
+
+msgid "Any"
+msgstr "Οποιοδήποτε"
+
+msgid "deny (block)"
+msgstr "άρνηση (μπλοκάρισμα)"
+
+msgid "allow"
+msgstr "επιτροπή"
+
+msgid "reject"
+msgstr "απόρριψη"
+
+msgid "on %s"
+msgstr "σε %s"
+
+msgid "from %s"
+msgstr "από %s"
+
+msgid "to %s"
+msgstr "προς %s"
+
+msgid "port %s"
+msgstr "θύρα %s"
+
+msgid "Edit Rule"
+msgstr "Επεξεργασία κανόνα"
+
+msgid "New Rule"
+msgstr "Νέος κανόνας"
+
+msgid "Cancel"
+msgstr "Άκυρο"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Διευθύνσεις και θύρες (προαιρετικά)"
+
+msgid "Interface"
+msgstr "Διεπαφή"
+
+msgid "Source (from)"
+msgstr "Προέλευση (from)"
+
+msgid "Destination (to)"
+msgstr "Προορισμός (to)"
+
+msgid "Port"
+msgstr "Θύρα"
+
+msgid "Comment"
+msgstr "Σχόλιο"
+
+msgid "General"
+msgstr "Γενικά"
+
+msgid "Firewall active"
+msgstr "Τείχος ενεργό"
+
+msgid "Active Profile"
+msgstr "Ενεργό προφίλ"
+
+msgid "Status (ufw)"
+msgstr "Κατάσταση (ufw)"
+
+msgid "Open gufw"
+msgstr "Άνοιγμα gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Επεξεργαστείτε σύνθετους μεμονωμένους κανόνες εξωτερικά (σημείωση: η εφαρμογή προφίλ διαγράφει ξένους κανόνες)"
+
+msgid "Launch"
+msgstr "Εκκίνηση"
+
+msgid "Could not launch gufw: %s"
+msgstr "Δεν ήταν δυνατή η εκκίνηση του gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Οι αλλαγές κανόνων στις σελίδες προφίλ ισχύουν μόνο μέσω «Εφαρμογή προφίλ». Κάθε αλλαγή τείχους απαιτεί εξουσιοδότηση PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "Δεν ήταν δυνατή η ενεργοποίηση του τείχους: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Δεν ήταν δυνατή η απενεργοποίηση του τείχους: %s"
+
+msgid "Active (%s)"
+msgstr "Ενεργό (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Μη προσβάσιμο: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Το προφίλ «%s» εφαρμόστηκε"
+
+msgid "Apply failed: %s"
+msgstr "Η εφαρμογή απέτυχε: %s"
+
+msgid "Default Policies"
+msgstr "Προεπιλεγμένες πολιτικές"
+
+msgid "Incoming"
+msgstr "Εισερχόμενα"
+
+msgid "Rules"
+msgstr "Κανόνες"
+
+msgid "Add Rule"
+msgstr "Προσθήκη κανόνα"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Εφαρμογή προφίλ «%s» τώρα"

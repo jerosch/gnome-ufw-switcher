@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: nl\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Firewall"
+
+msgid "Home"
+msgstr "Thuis"
+
+msgid "Office"
+msgstr "Kantoor"
+
+msgid "Public"
+msgstr "Openbaar"
+
+msgid "Edit Firewall Rules…"
+msgstr "Firewall-regels bewerken…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Daemon niet verbonden — even geduld"
+
+msgid "Daemon unreachable: %s"
+msgstr "Daemon onbereikbaar: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Schakelen van de firewall mislukt"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Kan profiel \"%s\" niet toepassen"
+
+msgid "Daemon unreachable"
+msgstr "Daemon onbereikbaar"
+
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Status: %s · Profiel: %s"
+
+msgid "Active"
+msgstr "Actief"
+
+msgid "Inactive"
+msgstr "Inactief"
+
+msgid "Allow"
+msgstr "Toestaan"
+
+msgid "Deny"
+msgstr "Weigeren"
+
+msgid "Reject"
+msgstr "Verwerpen"
+
+msgid "Inbound"
+msgstr "Inkomend"
+
+msgid "Outgoing"
+msgstr "Uitgaand"
+
+msgid "Any"
+msgstr "Willekeurig"
+
+msgid "deny (block)"
+msgstr "weigeren (blokkeren)"
+
+msgid "allow"
+msgstr "toestaan"
+
+msgid "reject"
+msgstr "verwerpen"
+
+msgid "on %s"
+msgstr "op %s"
+
+msgid "from %s"
+msgstr "van %s"
+
+msgid "to %s"
+msgstr "naar %s"
+
+msgid "port %s"
+msgstr "poort %s"
+
+msgid "Edit Rule"
+msgstr "Regel bewerken"
+
+msgid "New Rule"
+msgstr "Nieuwe regel"
+
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgid "Save"
+msgstr "Opslaan"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Adressen en poorten (optioneel)"
+
+msgid "Interface"
+msgstr "Interface"
+
+msgid "Source (from)"
+msgstr "Bron (from)"
+
+msgid "Destination (to)"
+msgstr "Bestemming (to)"
+
+msgid "Port"
+msgstr "Poort"
+
+msgid "Comment"
+msgstr "Opmerking"
+
+msgid "General"
+msgstr "Algemeen"
+
+msgid "Firewall active"
+msgstr "Firewall actief"
+
+msgid "Active Profile"
+msgstr "Actief profiel"
+
+msgid "Status (ufw)"
+msgstr "Status (ufw)"
+
+msgid "Open gufw"
+msgstr "gufw openen"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Complexe individuele regels extern bewerken (let op: een profiel toepassen overschrijft externe regels)"
+
+msgid "Launch"
+msgstr "Starten"
+
+msgid "Could not launch gufw: %s"
+msgstr "Kan gufw niet starten: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Regelwijzigingen op de profielpagina's worden pas toegepast met \"Profiel toepassen\". Elke firewallwijziging vereist PolicyKit-autorisatie."
+
+msgid "Could not enable firewall: %s"
+msgstr "Kan de firewall niet inschakelen: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Kan de firewall niet uitschakelen: %s"
+
+msgid "Active (%s)"
+msgstr "Actief (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Onbereikbaar: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Profiel \"%s\" toegepast"
+
+msgid "Apply failed: %s"
+msgstr "Toepassen mislukt: %s"
+
+msgid "Default Policies"
+msgstr "Standaardbeleid"
+
+msgid "Incoming"
+msgstr "Inkomend"
+
+msgid "Rules"
+msgstr "Regels"
+
+msgid "Add Rule"
+msgstr "Regel toevoegen"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Profiel \"%s\" nu toepassen"

@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: uk\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Брандмауер"
+
+msgid "Home"
+msgstr "Домашній"
+
+msgid "Office"
+msgstr "Офіс"
+
+msgid "Public"
+msgstr "Публічний"
+
+msgid "Edit Firewall Rules…"
+msgstr "Редагувати правила брандмауера…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Демон не під'єднано — зачекайте мить"
+
+msgid "Daemon unreachable: %s"
+msgstr "Демон недоступний: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Не вдалося перемкнути брандмауер"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Не вдається застосувати профіль «%s»"
+
+msgid "Daemon unreachable"
+msgstr "Демон недоступний"
+
+msgid "Disabled"
+msgstr "Вимкнено"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Стан: %s · Профіль: %s"
+
+msgid "Active"
+msgstr "Активний"
+
+msgid "Inactive"
+msgstr "Неактивний"
+
+msgid "Allow"
+msgstr "Дозволити"
+
+msgid "Deny"
+msgstr "Заборонити"
+
+msgid "Reject"
+msgstr "Відхилити"
+
+msgid "Inbound"
+msgstr "Вхідні"
+
+msgid "Outgoing"
+msgstr "Вихідні"
+
+msgid "Any"
+msgstr "Будь-який"
+
+msgid "deny (block)"
+msgstr "заборонити (блокувати)"
+
+msgid "allow"
+msgstr "дозволити"
+
+msgid "reject"
+msgstr "відхилити"
+
+msgid "on %s"
+msgstr "на %s"
+
+msgid "from %s"
+msgstr "з %s"
+
+msgid "to %s"
+msgstr "до %s"
+
+msgid "port %s"
+msgstr "порт %s"
+
+msgid "Edit Rule"
+msgstr "Редагувати правило"
+
+msgid "New Rule"
+msgstr "Нове правило"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Save"
+msgstr "Зберегти"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Адреси та порти (необов'язково)"
+
+msgid "Interface"
+msgstr "Інтерфейс"
+
+msgid "Source (from)"
+msgstr "Джерело (from)"
+
+msgid "Destination (to)"
+msgstr "Призначення (to)"
+
+msgid "Port"
+msgstr "Порт"
+
+msgid "Comment"
+msgstr "Коментар"
+
+msgid "General"
+msgstr "Загальні"
+
+msgid "Firewall active"
+msgstr "Брандмауер активний"
+
+msgid "Active Profile"
+msgstr "Активний профіль"
+
+msgid "Status (ufw)"
+msgstr "Стан (ufw)"
+
+msgid "Open gufw"
+msgstr "Відкрити gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Складні окремі правила редагуйте зовні (примітка: застосування профілю перезапише сторонні правила)"
+
+msgid "Launch"
+msgstr "Запустити"
+
+msgid "Could not launch gufw: %s"
+msgstr "Не вдалося запустити gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Зміни правил на сторінках профілю набувають чинності лише через «Застосувати профіль». Кожна зміна брандмауера потребує авторизації PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "Не вдалося ввімкнути брандмауер: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Не вдалося вимкнути брандмауер: %s"
+
+msgid "Active (%s)"
+msgstr "Активний (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Недоступно: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Профіль «%s» застосовано"
+
+msgid "Apply failed: %s"
+msgstr "Помилка застосування: %s"
+
+msgid "Default Policies"
+msgstr "Типові політики"
+
+msgid "Incoming"
+msgstr "Вхідні"
+
+msgid "Rules"
+msgstr "Правила"
+
+msgid "Add Rule"
+msgstr "Додати правило"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Застосувати профіль «%s» зараз"

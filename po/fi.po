@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: fi\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Palomuuri"
+
+msgid "Home"
+msgstr "Koti"
+
+msgid "Office"
+msgstr "Toimisto"
+
+msgid "Public"
+msgstr "Julkinen"
+
+msgid "Edit Firewall Rules…"
+msgstr "Muokkaa palomuurisääntöjä…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Taustapalvelu ei ole yhdistettynä — odota hetki"
+
+msgid "Daemon unreachable: %s"
+msgstr "Taustapalvelu tavoittamaton: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Palomuurin vaihtaminen epäonnistui"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Profiilia ”%s” ei voi ottaa käyttöön"
+
+msgid "Daemon unreachable"
+msgstr "Taustapalvelu tavoittamaton"
+
+msgid "Disabled"
+msgstr "Poistettu käytöstä"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Tila: %s · Profiili: %s"
+
+msgid "Active"
+msgstr "Käytössä"
+
+msgid "Inactive"
+msgstr "Ei käytössä"
+
+msgid "Allow"
+msgstr "Salli"
+
+msgid "Deny"
+msgstr "Estä"
+
+msgid "Reject"
+msgstr "Hylkää"
+
+msgid "Inbound"
+msgstr "Sisääntuleva"
+
+msgid "Outgoing"
+msgstr "Lähtevä"
+
+msgid "Any"
+msgstr "Mikä tahansa"
+
+msgid "deny (block)"
+msgstr "estä (esto)"
+
+msgid "allow"
+msgstr "salli"
+
+msgid "reject"
+msgstr "hylkää"
+
+msgid "on %s"
+msgstr "liitännällä %s"
+
+msgid "from %s"
+msgstr "lähteestä %s"
+
+msgid "to %s"
+msgstr "kohteeseen %s"
+
+msgid "port %s"
+msgstr "portti %s"
+
+msgid "Edit Rule"
+msgstr "Muokkaa sääntöä"
+
+msgid "New Rule"
+msgstr "Uusi sääntö"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Osoitteet ja portit (valinnainen)"
+
+msgid "Interface"
+msgstr "Liitäntä"
+
+msgid "Source (from)"
+msgstr "Lähde (from)"
+
+msgid "Destination (to)"
+msgstr "Kohde (to)"
+
+msgid "Port"
+msgstr "Portti"
+
+msgid "Comment"
+msgstr "Kommentti"
+
+msgid "General"
+msgstr "Yleiset"
+
+msgid "Firewall active"
+msgstr "Palomuuri käytössä"
+
+msgid "Active Profile"
+msgstr "Aktiivinen profiili"
+
+msgid "Status (ufw)"
+msgstr "Tila (ufw)"
+
+msgid "Open gufw"
+msgstr "Avaa gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Muokkaa monimutkaisia yksittäisiä sääntöjä ulkoisesti (huomaa: profiilin käyttöönotto ylikirjoittaa ulkopuoliset säännöt)"
+
+msgid "Launch"
+msgstr "Käynnistä"
+
+msgid "Could not launch gufw: %s"
+msgstr "Gufwta ei voitu käynnistää: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Sääntömuutokset profiilisivuilla tulevat voimaan vasta ”Ota profiili käyttöön” -toiminnolla. Jokainen palomuuriin kohdistuva muutos vaatii PolicyKit-valtuutuksen."
+
+msgid "Could not enable firewall: %s"
+msgstr "Palomuuria ei voitu ottaa käyttöön: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Palomuuria ei voitu poistaa käytöstä: %s"
+
+msgid "Active (%s)"
+msgstr "Käytössä (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Tavoittamaton: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Profiili ”%s” otettu käyttöön"
+
+msgid "Apply failed: %s"
+msgstr "Käyttöönotto epäonnistui: %s"
+
+msgid "Default Policies"
+msgstr "Oletuskäytännöt"
+
+msgid "Incoming"
+msgstr "Sisääntulevat"
+
+msgid "Rules"
+msgstr "Säännöt"
+
+msgid "Add Rule"
+msgstr "Lisää sääntö"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Ota profiili ”%s” käyttöön nyt"

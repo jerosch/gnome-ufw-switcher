@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: pl\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Zapora"
+
+msgid "Home"
+msgstr "Dom"
+
+msgid "Office"
+msgstr "Biuro"
+
+msgid "Public"
+msgstr "Publiczny"
+
+msgid "Edit Firewall Rules…"
+msgstr "Edytuj reguły zapory…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Demon nie połączony — chwilę poczekaj"
+
+msgid "Daemon unreachable: %s"
+msgstr "Demon nieosiągalny: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Nie udało się przełączyć zapory"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Nie można zastosować profilu „%s”"
+
+msgid "Daemon unreachable"
+msgstr "Demon nieosiągalny"
+
+msgid "Disabled"
+msgstr "Wyłączona"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Status: %s · Profil: %s"
+
+msgid "Active"
+msgstr "Aktywna"
+
+msgid "Inactive"
+msgstr "Nieaktywna"
+
+msgid "Allow"
+msgstr "Zezwól"
+
+msgid "Deny"
+msgstr "Odmów"
+
+msgid "Reject"
+msgstr "Odrzuć"
+
+msgid "Inbound"
+msgstr "Przychodzące"
+
+msgid "Outgoing"
+msgstr "Wychodzące"
+
+msgid "Any"
+msgstr "Dowolny"
+
+msgid "deny (block)"
+msgstr "odmów (zablokuj)"
+
+msgid "allow"
+msgstr "zezwól"
+
+msgid "reject"
+msgstr "odrzuć"
+
+msgid "on %s"
+msgstr "na %s"
+
+msgid "from %s"
+msgstr "z %s"
+
+msgid "to %s"
+msgstr "do %s"
+
+msgid "port %s"
+msgstr "port %s"
+
+msgid "Edit Rule"
+msgstr "Edytuj regułę"
+
+msgid "New Rule"
+msgstr "Nowa reguła"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Adresy i porty (opcjonalnie)"
+
+msgid "Interface"
+msgstr "Interfejs"
+
+msgid "Source (from)"
+msgstr "Źródło (from)"
+
+msgid "Destination (to)"
+msgstr "Przeznaczenie (to)"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Comment"
+msgstr "Komentarz"
+
+msgid "General"
+msgstr "Ogólne"
+
+msgid "Firewall active"
+msgstr "Zapora aktywna"
+
+msgid "Active Profile"
+msgstr "Aktywny profil"
+
+msgid "Status (ufw)"
+msgstr "Status (ufw)"
+
+msgid "Open gufw"
+msgstr "Otwórz gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Edytuj złożone pojedyncze reguły zewnętrznie (uwaga: zastosowanie profilu nadpisze obce reguły)"
+
+msgid "Launch"
+msgstr "Uruchom"
+
+msgid "Could not launch gufw: %s"
+msgstr "Nie można uruchomić gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Zmiany reguł na stronach profilu działają dopiero po „Zastosuj profil”. Każda zmiana zapory wymaga autoryzacji PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "Nie można włączyć zapory: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Nie można wyłączyć zapory: %s"
+
+msgid "Active (%s)"
+msgstr "Aktywna (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Nieosiągalne: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Zastosowano profil „%s”"
+
+msgid "Apply failed: %s"
+msgstr "Nie udało się zastosować: %s"
+
+msgid "Default Policies"
+msgstr "Polityki domyślne"
+
+msgid "Incoming"
+msgstr "Przychodzące"
+
+msgid "Rules"
+msgstr "Reguły"
+
+msgid "Add Rule"
+msgstr "Dodaj regułę"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Zastosuj profil „%s” teraz"

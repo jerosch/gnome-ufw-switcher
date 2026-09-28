@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: sv\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Brandvägg"
+
+msgid "Home"
+msgstr "Hem"
+
+msgid "Office"
+msgstr "Kontor"
+
+msgid "Public"
+msgstr "Offentlig"
+
+msgid "Edit Firewall Rules…"
+msgstr "Redigera brandväggsregler…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Daemonen är inte ansluten — vänta en stund"
+
+msgid "Daemon unreachable: %s"
+msgstr "Daemonen går inte att nå: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Det gick inte att växla brandvägg"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Kan inte tillämpa profilen ”%s”"
+
+msgid "Daemon unreachable"
+msgstr "Daemonen går inte att nå"
+
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Status: %s · Profil: %s"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "Inactive"
+msgstr "Inaktiv"
+
+msgid "Allow"
+msgstr "Tillåt"
+
+msgid "Deny"
+msgstr "Neka"
+
+msgid "Reject"
+msgstr "Avvisa"
+
+msgid "Inbound"
+msgstr "Inkommande"
+
+msgid "Outgoing"
+msgstr "Utgående"
+
+msgid "Any"
+msgstr "Valfri"
+
+msgid "deny (block)"
+msgstr "neka (blockera)"
+
+msgid "allow"
+msgstr "tillåt"
+
+msgid "reject"
+msgstr "avvisa"
+
+msgid "on %s"
+msgstr "på %s"
+
+msgid "from %s"
+msgstr "från %s"
+
+msgid "to %s"
+msgstr "till %s"
+
+msgid "port %s"
+msgstr "port %s"
+
+msgid "Edit Rule"
+msgstr "Redigera regel"
+
+msgid "New Rule"
+msgstr "Ny regel"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Save"
+msgstr "Spara"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Adresser och portar (valfritt)"
+
+msgid "Interface"
+msgstr "Gränssnitt"
+
+msgid "Source (from)"
+msgstr "Källa (from)"
+
+msgid "Destination (to)"
+msgstr "Mål (to)"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "General"
+msgstr "Allmänt"
+
+msgid "Firewall active"
+msgstr "Brandvägg aktiv"
+
+msgid "Active Profile"
+msgstr "Aktiv profil"
+
+msgid "Status (ufw)"
+msgstr "Status (ufw)"
+
+msgid "Open gufw"
+msgstr "Öppna gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Redigera komplexa enstaka regler externt (obs: tillämpning av en profil skrivs över främmande regler)"
+
+msgid "Launch"
+msgstr "Starta"
+
+msgid "Could not launch gufw: %s"
+msgstr "Kunde inte starta gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Regeländringar på profilsidorna träder i kraft först via ”Tillämpa profil”. Varje brandväggsändring kräver PolicyKit-autorisation."
+
+msgid "Could not enable firewall: %s"
+msgstr "Kunde inte aktivera brandväggen: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Kunde inte inaktivera brandväggen: %s"
+
+msgid "Active (%s)"
+msgstr "Aktiv (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Går inte att nå: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Profilen ”%s” tillämpad"
+
+msgid "Apply failed: %s"
+msgstr "Tillämpningen misslyckades: %s"
+
+msgid "Default Policies"
+msgstr "Standardpolicyer"
+
+msgid "Incoming"
+msgstr "Inkommande"
+
+msgid "Rules"
+msgstr "Regler"
+
+msgid "Add Rule"
+msgstr "Lägg till regel"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Tillämpa profilen ”%s” nu"

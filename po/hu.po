@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: hu\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Tűzfal"
+
+msgid "Home"
+msgstr "Otthon"
+
+msgid "Office"
+msgstr "Iroda"
+
+msgid "Public"
+msgstr "Nyilvános"
+
+msgid "Edit Firewall Rules…"
+msgstr "Tűzfalszabályok szerkesztése…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "A démon nincs csatlakozva — egy kis türelmet"
+
+msgid "Daemon unreachable: %s"
+msgstr "A démon nem érhető el: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Nem sikerült átkapcsolni a tűzfalat"
+
+msgid "Cannot apply profile “%s”"
+msgstr "Nem alkalmazható a(z) „%s” profil"
+
+msgid "Daemon unreachable"
+msgstr "A démon nem érhető el"
+
+msgid "Disabled"
+msgstr "Letiltva"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Állapot: %s · Profil: %s"
+
+msgid "Active"
+msgstr "Aktív"
+
+msgid "Inactive"
+msgstr "Inaktív"
+
+msgid "Allow"
+msgstr "Engélyezés"
+
+msgid "Deny"
+msgstr "Megtagadás"
+
+msgid "Reject"
+msgstr "Elutasítás"
+
+msgid "Inbound"
+msgstr "Bejövő"
+
+msgid "Outgoing"
+msgstr "Kimenő"
+
+msgid "Any"
+msgstr "Bármely"
+
+msgid "deny (block)"
+msgstr "megtagadás (blokkolás)"
+
+msgid "allow"
+msgstr "engedélyezés"
+
+msgid "reject"
+msgstr "elutasítás"
+
+msgid "on %s"
+msgstr "%s interfészen"
+
+msgid "from %s"
+msgstr "forrás: %s"
+
+msgid "to %s"
+msgstr "cél: %s"
+
+msgid "port %s"
+msgstr "port: %s"
+
+msgid "Edit Rule"
+msgstr "Szabály szerkesztése"
+
+msgid "New Rule"
+msgstr "Új szabály"
+
+msgid "Cancel"
+msgstr "Mégse"
+
+msgid "Save"
+msgstr "Mentés"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Címek és portok (nem kötelező)"
+
+msgid "Interface"
+msgstr "Interfész"
+
+msgid "Source (from)"
+msgstr "Forrás (from)"
+
+msgid "Destination (to)"
+msgstr "Cél (to)"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Comment"
+msgstr "Megjegyzés"
+
+msgid "General"
+msgstr "Általános"
+
+msgid "Firewall active"
+msgstr "Tűzfal aktív"
+
+msgid "Active Profile"
+msgstr "Aktív profil"
+
+msgid "Status (ufw)"
+msgstr "Állapot (ufw)"
+
+msgid "Open gufw"
+msgstr "gufw megnyitása"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Szerkessze a komplex egyedi szabályokat külső alkalmazásban (megjegyzés: egy profil alkalmazása felülírja a külső szabályokat)"
+
+msgid "Launch"
+msgstr "Indítás"
+
+msgid "Could not launch gufw: %s"
+msgstr "Nem sikerült elindítani a gufw-t: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "A profilon végzett szabálymódosítások csak a „Profil alkalmazása” gombbal lépnek életbe. Minden tűzfalmódosítás PolicyKit-hitelesítést igényel."
+
+msgid "Could not enable firewall: %s"
+msgstr "Nem sikerült engedélyezni a tűzfalat: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "Nem sikerült letiltani a tűzfalat: %s"
+
+msgid "Active (%s)"
+msgstr "Aktív (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Nem érhető el: %s"
+
+msgid "Profile “%s” applied"
+msgstr "A(z) „%s” profil alkalmazva"
+
+msgid "Apply failed: %s"
+msgstr "Az alkalmazás sikertelen: %s"
+
+msgid "Default Policies"
+msgstr "Alapértelmezett szabályzatok"
+
+msgid "Incoming"
+msgstr "Bejövő"
+
+msgid "Rules"
+msgstr "Szabályok"
+
+msgid "Add Rule"
+msgstr "Szabály hozzáadása"
+
+msgid "Apply “%s” Profile Now"
+msgstr "A(z) „%s” profil alkalmazása most"

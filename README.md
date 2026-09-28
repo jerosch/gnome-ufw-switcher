@@ -1,79 +1,101 @@
 # gnome-ufw-switcher
 
-GNOME-Shell-Erweiterung (GNOME 50) zur Steuerung der **ufw**-Firewall:
+A GNOME Shell extension (GNOME 50) to control the **ufw** firewall:
 
-- **Quick Settings** (Systemmenü oben rechts):
-  - Toggle: Firewall **ein/aus**
-  - Menü (Pfeil im Toggle): Profil wechseln — **Zuhause / Büro / Öffentlich**
-  - Direktzugriff auf die Regel-Bearbeitung
-- **Einstellungen / Regel-Editor**: Profile mit Standard-Richtlinien
-  (deny/allow/reject) und beliebigen Regeln (Interface, Quelle, Ziel,
-  Port, Protokoll, Kommentar)
-- **Sicher**: Jede Änderung an der Firewall läuft über einen privilegierten
-  D-Bus-Dienst mit **Polkit-Abfrage** (auth_admin)
+- **Quick Settings** (top-right system menu):
+  - Toggle: firewall **on/off**
+  - Menu (arrow in the toggle): switch profile — **Home / Office / Public**
+  - Direct access to rule editing
+- **Preferences / rule editor**: profiles with default policies
+  (deny/allow/reject) and arbitrary rules (interface, source,
+  destination, port, protocol, comment)
+- **Secure**: every firewall change goes through a privileged D-Bus
+  service with a **PolicyKit** prompt (auth_admin)
+- **Translated**: follows the system language (21 languages included)
 
-## Architektur
+## Architecture
 
 ```
-GNOME Shell (Extension)          prefs (GTK4/Adw)
+GNOME Shell (extension)          prefs (GTK4/Adw)
         │                              │
-        └────── D-Bus (System) ────────┘
+        └────── D-Bus (system) ────────┘
                      │
-        org.gnome.UfwSwitcher  (ufw_switcherd.py, läuft als root in
-                     │         systemd-Unit gnome-ufw-switcherd.service,
-                     ▼         Polkit: org.gnome.ufw-switcher.modify)
+        org.gnome.UfwSwitcher  (ufw_switcherd.py, runs as root in the
+                     │         systemd unit gnome-ufw-switcherd.service,
+                     ▼         PolicyKit: org.gnome.ufw-switcher.modify)
                   ufw
 ```
 
-Wichtige Eigenschaften:
+Key properties:
 
-- **Profil = vollständiger Zustand.** Beim Anwenden eines Profils wird die
-  ufw-Konfiguration deterministisch neu aufgebaut
-  (`ufw --force reset` + Regeln + `enable`). Manuell per CLI angelegte
-  Regeln werden dabei **überschrieben** — die Profile in den Einstellungen
-  sind die einzige Quelle der Wahrheit.
-- Profile liegen als JSON in GSettings
-  (`org.gnome.shell.extensions.ufw-switcher`), sind also auch per
-  `gsettings` skriptbar.
+- **Profile = complete state.** Applying a profile rebuilds the ufw
+  configuration deterministically (`ufw --force reset` + rules +
+  `enable`). Rules created manually via CLI are **overwritten** — the
+  profiles in the preferences are the single source of truth.
+- Profiles are stored as JSON in GSettings
+  (`org.gnome.shell.extensions.ufw-switcher`) and can therefore also be
+  scripted via `gsettings`.
 
 ## Installation
 
-Voraussetzungen: GNOME 50, `ufw`, `glib-compile-schemas`, `gnome-extensions`.
+Requirements: GNOME 50, `ufw`, `glib-compile-schemas`, `gnome-extensions`,
+`gettext` (msgfmt, for building translations).
 
 ```sh
-# 1) Daemon + D-Bus + Polkit (einmalig, root)
+# 1) Daemon + D-Bus + PolicyKit (one-time, root)
 sudo make install-daemon
 
-# 2) Extension ins User-Verzeichnis + aktivieren
+# 2) Install extension into user directory + enable
 make install-user
 gnome-extensions enable ufw-switcher@schneiderr.dev
 ```
 
-Die Extension liegt danach unter
+The extension ends up in
 `~/.local/share/gnome-shell/extensions/ufw-switcher@schneiderr.dev`.
 
-## Verwendung
+## Usage
 
 ### Quick Settings
-Oben rechts auf das Systemmenü → **Firewall**-Toggle:
-- Klick auf das Icon: Firewall ein/aus (Polkit-Passwortabfrage)
-- Klick auf den Pfeil: Profil auswählen (Zuhause/Büro/Öffentlich) oder
-  „Firewall-Regeln bearbeiten…“
+Top right, system menu → **Firewall** toggle:
+- Click the icon: firewall on/off (PolicyKit password prompt)
+- Click the arrow: select profile (Home/Office/Public) or
+  "Edit Firewall Rules…"
 
-### Regeln bearbeiten
-Über das Menü oder die App **Firewall-Regeln (UFW)** (App-Grid).
-Pro Profil einstellbar:
-- Standard-Richtlinien eingehend/ausgehend
-- Regeln: allow/deny/reject, Richtung, Interface, Quelle, Ziel,
-  Port, Protokoll, Kommentar
+### Editing rules
+Via the menu or the **Firewall Rules (UFW)** app (app grid).
+Per profile:
+- Default policies incoming/outgoing
+- Rules: allow/deny/reject, direction, interface, source,
+  destination, port, protocol, comment
 
-Regel-Änderungen werden über **„Profil jetzt anwenden“** aktiv.
+Rule changes become active via **"Apply Profile Now"**.
 
-## Passwortabfrage entschärfen (optional)
+## Translations
 
-Standard: `auth_admin` (Passwort bei jeder Änderung). Wer das als
-nervig empfindet, kann lokalen aktiven Nutzern der Gruppe `wheel`
-änderungen ohne Passwort erlauben —
+User-facing strings are English in the source and translated via gettext.
+The extension follows the system language automatically.
+
+Included languages (21):
+Czech, Danish, Dutch, Finnish, French, German, Greek, Hungarian, Italian,
+Japanese, Norwegian Bokmål, Polish, Portuguese (Brazil), Romanian,
+Russian, Simplified Chinese, Slovak, Spanish, Swedish, Turkish, Ukrainian.
+
+To add or update a language:
+
+1. Create `po/translations_<lang>.py` with a list `T` of 57 strings in
+   the same order as `MSGIDS` in `po/generate.py`
+   (see existing files as template).
+2. Run `python3 po/generate.py` — writes `po/<lang>.po` and compiles
+   `locale/<lang>/LC_MESSAGES/ufw-switcher@schneiderr.dev.mo`.
+3. `make install-user`
+
+Contributions welcome.
+
+## Removing the password prompt (optional)
+
+Default: `auth_admin` (password on every change). If you find that
+annoying, local active users of the `wheel` group can be allowed to make
+changes without a password —
 `/usr/share/polkit-1/rules.d/60-ufw-switcher.rules.js`:
 
 ```js
@@ -85,36 +107,36 @@ polkit.addRule(function (action, subject) {
 });
 ```
 
-**Achtung:** Dann kann jede Anwendung in deiner lokalen Sitzung die
-Firewall umkonfigurieren. Bewusst einsetzen.
+**Warning:** then any application in your local session can reconfigure
+the firewall. Use deliberately.
 
-## Testen des Daemons
+## Testing the daemon
 
 ```sh
-sudo dbus-send --system --print-reply \
+dbus-send --system --print-reply \
     --dest=org.gnome.UfwSwitcher /org/gnome/UfwSwitcher \
     org.gnome.UfwSwitcher.GetStatus
 ```
 
-## Deinstallation
+## Uninstall
 
 ```sh
 make uninstall
-# Root-Reste:
+# Root leftovers:
+sudo systemctl disable --now gnome-ufw-switcherd.service
 sudo rm -rf /usr/lib/gnome-ufw-switcher \
-    /usr/share/dbus-1/system-services/org.gnome.UfwSwitcher.service \
+    /usr/lib/systemd/system/gnome-ufw-switcherd.service \
     /usr/share/dbus-1/system.d/org.gnome.UfwSwitcher.conf \
     /usr/share/polkit-1/actions/org.gnome.ufw-switcher.policy
 ```
 
-## Hinweis zu „Einstellungen → Netzwerk“
+## Note on "Settings → Network"
 
-Die GNOME-Einstellungen (`gnome-control-center`) bieten **keine
-Plugin-Schnittstelle** für Fremd-Panels. Der Regel-Editor ist deshalb eine
-eigene, im Adwaita-Stil gehaltene Fenster-App, die direkt aus den
-Quick Settings und aus dem App-Grid erreichbar ist — funktional das
-Äquivalent eines Netzwerk-Unterpunkts.
+GNOME Settings (`gnome-control-center`) offers **no plugin interface**
+for third-party panels. The rule editor is therefore a standalone window
+in the Adwaita style, reachable directly from Quick Settings and from
+the app grid — functionally the equivalent of a network sub-page.
 
-## Lizenz
+## License
 
-GPL-2.0-or-later — siehe [LICENSE](LICENSE).
+GPL-2.0-or-later — see [LICENSE](LICENSE).

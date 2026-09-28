@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-ufw-switcher 1.0\n"
+"MIME-Version: 1.0\n"
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Firewall"
+msgstr "Cortafuegos"
+
+msgid "Home"
+msgstr "Casa"
+
+msgid "Office"
+msgstr "Oficina"
+
+msgid "Public"
+msgstr "Público"
+
+msgid "Edit Firewall Rules…"
+msgstr "Editar reglas del cortafuegos…"
+
+msgid "Daemon not connected — please wait a moment"
+msgstr "Daemon no conectado — espera un momento"
+
+msgid "Daemon unreachable: %s"
+msgstr "Daemon inaccesible: %s"
+
+msgid "Failed to toggle firewall"
+msgstr "Error al alternar el cortafuegos"
+
+msgid "Cannot apply profile “%s”"
+msgstr "No se puede aplicar el perfil «%s»"
+
+msgid "Daemon unreachable"
+msgstr "Daemon inaccesible"
+
+msgid "Disabled"
+msgstr "Desactivado"
+
+msgid "Status: %s · Profile: %s"
+msgstr "Estado: %s · Perfil: %s"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Inactive"
+msgstr "Inactivo"
+
+msgid "Allow"
+msgstr "Permitir"
+
+msgid "Deny"
+msgstr "Denegar"
+
+msgid "Reject"
+msgstr "Rechazar"
+
+msgid "Inbound"
+msgstr "Entrante"
+
+msgid "Outgoing"
+msgstr "Saliente"
+
+msgid "Any"
+msgstr "Cualquiera"
+
+msgid "deny (block)"
+msgstr "denegar (bloquear)"
+
+msgid "allow"
+msgstr "permitir"
+
+msgid "reject"
+msgstr "rechazar"
+
+msgid "on %s"
+msgstr "en %s"
+
+msgid "from %s"
+msgstr "desde %s"
+
+msgid "to %s"
+msgstr "hacia %s"
+
+msgid "port %s"
+msgstr "puerto %s"
+
+msgid "Edit Rule"
+msgstr "Editar regla"
+
+msgid "New Rule"
+msgstr "Nueva regla"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Addresses and Ports (optional)"
+msgstr "Direcciones y puertos (opcional)"
+
+msgid "Interface"
+msgstr "Interfaz"
+
+msgid "Source (from)"
+msgstr "Origen (from)"
+
+msgid "Destination (to)"
+msgstr "Destino (to)"
+
+msgid "Port"
+msgstr "Puerto"
+
+msgid "Comment"
+msgstr "Comentario"
+
+msgid "General"
+msgstr "General"
+
+msgid "Firewall active"
+msgstr "Cortafuegos activo"
+
+msgid "Active Profile"
+msgstr "Perfil activo"
+
+msgid "Status (ufw)"
+msgstr "Estado (ufw)"
+
+msgid "Open gufw"
+msgstr "Abrir gufw"
+
+msgid "Edit complex individual rules externally (note: applying a profile will overwrite foreign rules)"
+msgstr "Editar reglas individuales complejas externamente (nota: aplicar un perfil sobrescribirá las reglas ajenas)"
+
+msgid "Launch"
+msgstr "Iniciar"
+
+msgid "Could not launch gufw: %s"
+msgstr "No se pudo iniciar gufw: %s"
+
+msgid "Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization."
+msgstr "Los cambios de reglas en las páginas de perfil solo se aplican con «Aplicar perfil». Cada cambio en el cortafuegos requiere autorización de PolicyKit."
+
+msgid "Could not enable firewall: %s"
+msgstr "No se pudo activar el cortafuegos: %s"
+
+msgid "Could not disable firewall: %s"
+msgstr "No se pudo desactivar el cortafuegos: %s"
+
+msgid "Active (%s)"
+msgstr "Activo (%s)"
+
+msgid "Unreachable: %s"
+msgstr "Inaccesible: %s"
+
+msgid "Profile “%s” applied"
+msgstr "Perfil «%s» aplicado"
+
+msgid "Apply failed: %s"
+msgstr "Error al aplicar: %s"
+
+msgid "Default Policies"
+msgstr "Políticas predeterminadas"
+
+msgid "Incoming"
+msgstr "Entrantes"
+
+msgid "Rules"
+msgstr "Reglas"
+
+msgid "Add Rule"
+msgstr "Añadir regla"
+
+msgid "Apply “%s” Profile Now"
+msgstr "Aplicar el perfil «%s» ahora"
