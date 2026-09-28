@@ -1,5 +1,6 @@
 build/
 locale/
+*.zip
 __pycache__/
 *.pyc
 *.bak

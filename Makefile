@@ -6,6 +6,7 @@
 # make enable / disable / uninstall
 
 UUID       := ufw-switcher@jerosch.github.io
+VERSION    := 1.0.0
 EXT_DIR    := $(HOME)/.local/share/gnome-shell/extensions/$(UUID)
 DAEMON_DIR := /usr/lib/gnome-ufw-switcher
 
@@ -15,7 +16,7 @@ POLKIT_ACTIONS       := /usr/share/polkit-1/actions
 SYSTEMD_SYSTEM       := /usr/lib/systemd/system
 APPLICATIONS       := $(HOME)/.local/share/applications
 
-.PHONY: all build install install-user install-daemon enable disable uninstall clean
+.PHONY: all build package install install-user install-daemon enable disable uninstall clean
 
 all: build
 
@@ -28,6 +29,16 @@ build:
 	glib-compile-schemas build/schemas/
 	python3 po/generate.py
 	cp -r locale build/
+
+# extensions.gnome.org expects a zip with a top-level folder named after the UUID
+package: build
+	rm -rf build/pkg
+	mkdir -p build/pkg/$(UUID)
+	cp build/metadata.json build/extension.js build/prefs.js build/stylesheet.css build/pkg/$(UUID)/
+	cp -r build/schemas build/pkg/$(UUID)/
+	cp -r build/locale build/pkg/$(UUID)/
+	cd build/pkg && rm -f ../../$(UUID).v$(VERSION).shell-extension.zip && zip -qr ../../$(UUID).v$(VERSION).shell-extension.zip $(UUID)
+	@echo "Release-Paket: $(UUID).v$(VERSION).shell-extension.zip"
 
 install-user: build
 	install -d "$(EXT_DIR)"
