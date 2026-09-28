@@ -31,15 +31,14 @@ function modeInfo(id) {
 
 const FirewallIndicator = GObject.registerClass(
 class FirewallIndicator extends SystemIndicator {
-    _init(extension) {
+    _init(extension, settings) {
         super._init();
 
         this._extension = extension;
-        this._settings = extension.getSettings();
+        this._settings = settings;
         this._busy = false;
         this._destroyed = false;
         this._status = {enabled: false, raw: ''};
-        this._timerId = 0;
 
         // Panel icon
         this._panelIcon = new St.Icon({
@@ -59,22 +58,7 @@ class FirewallIndicator extends SystemIndicator {
         this.quickSettingsItems.push(this._toggle);
 
         this._buildMenu();
-
-        this._toggle.connect('clicked', () => this._onToggle());
-        this._toggle.menu.connect('open-state-changed', (menu, opened) => {
-            if (opened)
-                this.refresh();
-        });
-
-        this._settings.connect('changed::mode', () => {
-            this._updateUi();
-            this._updateChecks();
-        });
-        this._settings.connect('changed::enabled', () => this._updateUi());
-        this._settings.connect('changed::refresh-interval',
-            () => this._restartTimer());
-
-        this._restartTimer();
+        this._updateUi();
     }
 
     _buildMenu() {
@@ -241,29 +225,12 @@ class FirewallIndicator extends SystemIndicator {
             check.opacity = id === current ? 255 : 0;
     }
 
-    _restartTimer() {
-        if (this._timerId) {
-            GLib.source_remove(this._timerId);
-            this._timerId = 0;
-        }
-        const sec = this._settings.get_int('refresh-interval');
-        this._timerId = GLib.timeout_add_seconds(
-            GLib.PRIORITY_LOW, sec, () => {
-                this.refresh();
-                return GLib.SOURCE_CONTINUE;
-            });
-    }
-
     _notify(title, detail) {
         Main.notify(`UFW Switcher: ${title}`, detail);
     }
 
     vfunc_destroy() {
         this._destroyed = true;
-        if (this._timerId) {
-            GLib.source_remove(this._timerId);
-            this._timerId = 0;
-        }
         // The toggle lives in the quick settings grid, not in this
         // container — destroy it explicitly or it leaks on every
         // enable/disable cycle.
@@ -279,12 +246,37 @@ export default class UfwSwitcherExtension extends Extension {
         this.dbusProxy = null;
         this._changedId = 0;
         this._enabled = false;
+        this._settings = null;
+        this._timerId = 0;
+        this._modeChangedId = 0;
+        this._enabledChangedId = 0;
+        this._refreshChangedId = 0;
+        this._toggleClickedId = 0;
+        this._menuOpenedId = 0;
     }
 
     enable() {
         this._enabled = true;
-        this._indicator = new FirewallIndicator(this);
+        this._settings = this.getSettings();
+        this._indicator = new FirewallIndicator(this, this._settings);
         Main.panel.statusArea.quickSettings.addExternalIndicator(this._indicator);
+
+        this._modeChangedId = this._settings.connect('changed::mode', () => {
+            this._indicator?._updateUi();
+            this._indicator?._updateChecks();
+        });
+        this._enabledChangedId = this._settings.connect('changed::enabled',
+            () => this._indicator?._updateUi());
+        this._refreshChangedId = this._settings.connect('changed::refresh-interval',
+            () => this._restartTimer());
+        this._toggleClickedId = this._indicator._toggle.connect('clicked',
+            () => this._indicator?._onToggle());
+        this._menuOpenedId = this._indicator._toggle.menu.connect(
+            'open-state-changed', (menu, opened) => {
+                if (opened)
+                    this._indicator?.refresh();
+            });
+        this._restartTimer();
 
         Gio.DBusProxy.new_for_bus(
             Gio.BusType.SYSTEM,
@@ -313,10 +305,43 @@ export default class UfwSwitcherExtension extends Extension {
             });
     }
 
+    _restartTimer() {
+        if (this._timerId) {
+            GLib.source_remove(this._timerId);
+            this._timerId = 0;
+        }
+        const sec = this._settings.get_int('refresh-interval');
+        this._timerId = GLib.timeout_add_seconds(
+            GLib.PRIORITY_LOW, sec, () => {
+                this._indicator?.refresh();
+                return GLib.SOURCE_CONTINUE;
+            });
+    }
+
     disable() {
         this._enabled = false;
+
+        if (this._timerId) {
+            GLib.source_remove(this._timerId);
+            this._timerId = 0;
+        }
+        if (this._settings) {
+            this._settings.disconnect(this._modeChangedId);
+            this._settings.disconnect(this._enabledChangedId);
+            this._settings.disconnect(this._refreshChangedId);
+            this._modeChangedId = 0;
+            this._enabledChangedId = 0;
+            this._refreshChangedId = 0;
+        }
+        if (this._indicator) {
+            this._indicator._toggle?.disconnect(this._toggleClickedId);
+            this._indicator._toggle?.menu?.disconnect(this._menuOpenedId);
+            this._toggleClickedId = 0;
+            this._menuOpenedId = 0;
+        }
         this._indicator?.destroy();
         this._indicator = null;
+        this._settings = null;
 
         if (this._changedId) {
             this.dbusProxy?.disconnect(this._changedId);

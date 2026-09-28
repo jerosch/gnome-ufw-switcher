@@ -30,11 +30,14 @@ build:
 	python3 po/generate.py
 	cp -r locale build/
 
-# extensions.gnome.org expects the extension files at the root of the zip
+# extensions.gnome.org expects the extension files at the root of the zip.
+# gschemas.compiled is excluded: gnome-extensions install compiles it at
+# install time (EGO-P-006).
 package: build
 	rm -f $(UUID).v$(VERSION).shell-extension.zip
 	cd build && zip -qr ../$(UUID).v$(VERSION).shell-extension.zip \
-		metadata.json extension.js prefs.js stylesheet.css schemas locale
+		metadata.json extension.js prefs.js stylesheet.css schemas locale \
+		-x schemas/gschemas.compiled
 	@echo "Release-Paket: $(UUID).v$(VERSION).shell-extension.zip"
 
 install-user: build
