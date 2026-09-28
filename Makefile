@@ -16,7 +16,7 @@ POLKIT_ACTIONS       := /usr/share/polkit-1/actions
 SYSTEMD_SYSTEM       := /usr/lib/systemd/system
 APPLICATIONS       := $(HOME)/.local/share/applications
 
-.PHONY: all build package install install-user install-daemon enable disable uninstall clean
+.PHONY: all build package daemon-tarball install install-user install-daemon enable disable uninstall clean
 
 all: build
 
@@ -39,6 +39,20 @@ package: build
 		metadata.json extension.js prefs.js stylesheet.css schemas locale \
 		-x schemas/gschemas.compiled
 	@echo "Release-Paket: $(UUID).v$(VERSION).shell-extension.zip"
+
+# Versioned daemon tarball for the GitHub release (standalone installer)
+daemon-tarball:
+	rm -rf build/daemon-stage
+	mkdir -p build/daemon-stage/gnome-ufw-switcher-daemon-v$(VERSION)
+	cp daemon/ufw_switcherd.py \
+	   daemon/org.gnome.UfwSwitcher.conf \
+	   daemon/org.gnome.ufw-switcher.policy \
+	   daemon/gnome-ufw-switcherd.service \
+	   dist/daemon-install.sh \
+	   build/daemon-stage/gnome-ufw-switcher-daemon-v$(VERSION)/
+	tar -czf gnome-ufw-switcher-daemon-v$(VERSION).tar.gz \
+		-C build/daemon-stage gnome-ufw-switcher-daemon-v$(VERSION)
+	@echo "Daemon-Tarball: gnome-ufw-switcher-daemon-v$(VERSION).tar.gz"
 
 install-user: build
 	install -d "$(EXT_DIR)"
