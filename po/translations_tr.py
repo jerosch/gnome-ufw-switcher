@@ -57,4 +57,11 @@ T = [
     "Kurallar",
     "Kural ekle",
     "“%s” profilini şimdi uygula",
+    "Ağa göre otomatik profil değiştirme",
+    "Ağ değiştiğinde eşleşen profili otomatik olarak uygula",
+    "Ağ Eşlemesi",
+    "Eşlenmemiş",
+    "Profil %s olarak değiştirildi (ağ: %s)",
+    "Bilinmeyen ağ “%s” — Genel’e geçildi. Tercihlerde eşleyin.",
+    "Kayıtlı ağ bulunamadı",
 ]

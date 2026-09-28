@@ -72,6 +72,13 @@ MSGIDS = [
     "Rules",
     "Add Rule",
     "Apply “%s” Profile Now",
+    "Auto-switch Profile by Network",
+    "Automatically apply the matching profile when the network changes",
+    "Network Mapping",
+    "Not mapped",
+    "Profile switched to %s (network: %s)",
+    "Unknown network “%s” — switched to Public. Map it in Preferences.",
+    "No saved networks found",
 ]
 
 TRANSLATIONS = {}  # filled by po/translations_<lang>.py modules

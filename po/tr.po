@@ -176,3 +176,24 @@ msgstr "Kural ekle"
 
 msgid "Apply “%s” Profile Now"
 msgstr "“%s” profilini şimdi uygula"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Ağa göre otomatik profil değiştirme"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Ağ değiştiğinde eşleşen profili otomatik olarak uygula"
+
+msgid "Network Mapping"
+msgstr "Ağ Eşlemesi"
+
+msgid "Not mapped"
+msgstr "Eşlenmemiş"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profil %s olarak değiştirildi (ağ: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Bilinmeyen ağ “%s” — Genel’e geçildi. Tercihlerde eşleyin."
+
+msgid "No saved networks found"
+msgstr "Kayıtlı ağ bulunamadı"

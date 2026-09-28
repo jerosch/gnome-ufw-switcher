@@ -176,3 +176,24 @@ msgstr "Regel toevoegen"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Profiel \"%s\" nu toepassen"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Profiel automatisch wisselen per netwerk"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Bij netwerkwijziging automatisch het passende profiel toepassen"
+
+msgid "Network Mapping"
+msgstr "Netwerktoewijzing"
+
+msgid "Not mapped"
+msgstr "Niet toegewezen"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profiel gewisseld naar %s (netwerk: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Onbekend netwerk “%s” — gewisseld naar Openbaar. Wijs het toe in Voorkeuren."
+
+msgid "No saved networks found"
+msgstr "Geen opgeslagen netwerken gevonden"

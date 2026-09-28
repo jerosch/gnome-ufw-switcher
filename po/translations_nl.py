@@ -57,4 +57,11 @@ T = [
     "Regels",
     "Regel toevoegen",
     "Profiel \"%s\" nu toepassen",
+    "Profiel automatisch wisselen per netwerk",
+    "Bij netwerkwijziging automatisch het passende profiel toepassen",
+    "Netwerktoewijzing",
+    "Niet toegewezen",
+    "Profiel gewisseld naar %s (netwerk: %s)",
+    "Onbekend netwerk “%s” — gewisseld naar Openbaar. Wijs het toe in Voorkeuren.",
+    "Geen opgeslagen netwerken gevonden",
 ]

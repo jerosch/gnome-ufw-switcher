@@ -57,4 +57,11 @@ T = [
     "Regole",
     "Aggiungi regola",
     "Applica il profilo \"%s\" ora",
+    "Cambio automatico del profilo in base alla rete",
+    "Applica automaticamente il profilo corrispondente al cambio di rete",
+    "Corrispondenza reti",
+    "Non assegnata",
+    "Profilo cambiato in %s (rete: %s)",
+    "Rete sconosciuta “%s” — passaggio a Pubblico. Assegnala nelle Preferenze.",
+    "Nessuna rete salvata trovata",
 ]

@@ -59,4 +59,11 @@ T = {
     "Rules": "Regeln",
     "Add Rule": "Regel hinzufügen",
     "Apply “%s” Profile Now": "Profil „%s“ jetzt anwenden",
+    "Auto-switch Profile by Network": "Profil je nach Netzwerk automatisch wechseln",
+    "Automatically apply the matching profile when the network changes": "Beim Netzwerkwechsel automatisch das passende Profil anwenden",
+    "Network Mapping": "Netzwerk-Zuordnung",
+    "Not mapped": "Nicht zugeordnet",
+    "Profile switched to %s (network: %s)": "Profil gewechselt auf %s (Netzwerk: %s)",
+    "Unknown network “%s” — switched to Public. Map it in Preferences.": "Unbekanntes Netzwerk „%s“ — auf Öffentlich gewechselt. Ordne es in den Einstellungen zu.",
+    "No saved networks found": "Keine gespeicherten Netzwerke gefunden",
 }

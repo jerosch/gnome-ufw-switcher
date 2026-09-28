@@ -57,4 +57,11 @@ T = [
     "Säännöt",
     "Lisää sääntö",
     "Ota profiili ”%s” käyttöön nyt",
+    "Profiilin automaattinen vaihto verkon mukaan",
+    "Käytä automaattisesti sopivaa profiilia verkon vaihtuessa",
+    "Verkkojen kartoitus",
+    "Ei kartoitettu",
+    "Profiili vaihdettu: %s (verkko: %s)",
+    "Tuntematon verkko ”%s” — vaihdettu julkiseen. Kartoita se asetuksissa.",
+    "Tallennettuja verkkoja ei löytynyt",
 ]

@@ -57,4 +57,11 @@ T = [
     "Reglas",
     "Añadir regla",
     "Aplicar el perfil «%s» ahora",
+    "Cambio automático de perfil según la red",
+    "Aplicar automáticamente el perfil correspondiente cuando cambia la red",
+    "Asignación de redes",
+    "Sin asignar",
+    "Perfil cambiado a %s (red: %s)",
+    "Red desconocida «%s» — cambiado a Público. Asígnala en Preferencias.",
+    "No se encontraron redes guardadas",
 ]

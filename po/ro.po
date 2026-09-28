@@ -176,3 +176,24 @@ msgstr "Adaugă regulă"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Aplică profilul „%s” acum"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Comutare automată a profilului în funcție de rețea"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Aplică automat profilul potrivit când rețeaua se schimbă"
+
+msgid "Network Mapping"
+msgstr "Cartografierea rețelelor"
+
+msgid "Not mapped"
+msgstr "Necartografiat"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profil comutat la %s (rețea: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Rețea necunoscută „%s” — comutat la Public. Carteaz-o în Preferințe."
+
+msgid "No saved networks found"
+msgstr "Nu s-au găsit rețele salvate"

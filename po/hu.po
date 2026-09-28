@@ -176,3 +176,24 @@ msgstr "Szabály hozzáadása"
 
 msgid "Apply “%s” Profile Now"
 msgstr "A(z) „%s” profil alkalmazása most"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Profil automatikus váltása hálózat szerint"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "A megfelelő profil automatikus alkalmazása hálózatváltáskor"
+
+msgid "Network Mapping"
+msgstr "Hálózatleképezés"
+
+msgid "Not mapped"
+msgstr "Nincs leképezve"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profil váltva: %s (hálózat: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Ismeretlen hálózat „%s” — Public-ra váltva. Képezte le a Beállításokban."
+
+msgid "No saved networks found"
+msgstr "Nincsenek mentett hálózatok"

@@ -57,4 +57,11 @@ T = [
     "Regras",
     "Adicionar regra",
     "Aplicar o perfil \"%s\" agora",
+    "Troca automática de perfil por rede",
+    "Aplicar automaticamente o perfil correspondente quando a rede mudar",
+    "Mapeamento de redes",
+    "Não mapeada",
+    "Perfil alterado para %s (rede: %s)",
+    "Rede desconhecida “%s” — alterado para Público. Mapeie-a nas Preferências.",
+    "Nenhuma rede salva encontrada",
 ]

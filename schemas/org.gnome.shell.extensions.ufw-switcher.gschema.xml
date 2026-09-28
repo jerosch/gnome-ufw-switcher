@@ -60,5 +60,21 @@
       <range min="10" max="600"/>
       <summary>Status refresh interval (seconds)</summary>
     </key>
+
+    <!-- Automatically switch profile based on the active network -->
+    <key name="auto-switch" type="b">
+      <default>false</default>
+      <summary>Auto-switch profile by network</summary>
+    </key>
+
+    <!--
+      Mapping of NetworkManager connection UUIDs to profiles:
+      {"<uuid>": "home|office|public"}
+      Networks not present in this map are treated as "public".
+    -->
+    <key name="network-map" type="s">
+      <default>'{}'</default>
+      <summary>Network UUID to profile mapping (JSON)</summary>
+    </key>
   </schema>
 </schemalist>

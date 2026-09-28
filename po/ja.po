@@ -176,3 +176,24 @@ msgstr "ルールを追加"
 
 msgid "Apply “%s” Profile Now"
 msgstr "プロファイル「%s」を今すぐ適用"
+
+msgid "Auto-switch Profile by Network"
+msgstr "ネットワークによるプロファイルの自動切り替え"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "ネットワーク変更時に一致するプロファイルを自動的に適用します"
+
+msgid "Network Mapping"
+msgstr "ネットワークの割り当て"
+
+msgid "Not mapped"
+msgstr "未割り当て"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "プロファイルを %s に切り替えました (ネットワーク: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "不明なネットワーク「%s」— 公開に切り替えました。設定で割り当ててください。"
+
+msgid "No saved networks found"
+msgstr "保存されたネットワークが見つかりません"

@@ -57,4 +57,11 @@ T = [
     "Regler",
     "Tilføj regel",
     "Anvend profilen “%s” nu",
+    "Automatisk profilskift efter netværk",
+    "Anvend automatisk den matchende profil, når netværket skifter",
+    "Netværkstilknytning",
+    "Ikke tilknyttet",
+    "Profil skiftet til %s (netværk: %s)",
+    "Ukendt netværk “%s” — skiftet til Offentlig. Tilknyt det i Indstillinger.",
+    "Ingen gemte netværk fundet",
 ]

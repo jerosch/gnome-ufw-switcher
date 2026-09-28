@@ -57,4 +57,11 @@ T = [
     "Pravidlá",
     "Pridať pravidlo",
     "Aplikovať profil „%s“ teraz",
+    "Automatické prepnutie profilu podľa siete",
+    "Pri zmene siete automaticky použiť zodpovedajúci profil",
+    "Mapovanie sietí",
+    "Nemapované",
+    "Profil prepnutý na %s (sieť: %s)",
+    "Neznáma sieť „%s“ — prepnuté na Verejný. Namapujte ju v Predvoľbách.",
+    "Nenašli sa žiadne uložené siete",
 ]

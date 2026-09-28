@@ -253,6 +253,12 @@ export default class UfwSwitcherExtension extends Extension {
         this._refreshChangedId = 0;
         this._toggleClickedId = 0;
         this._menuOpenedId = 0;
+        this._autoSwitchSettingId = 0;
+        this._nmClient = null;
+        this._nmActiveId = 0;
+        this._nmRemovedId = 0;
+        this._autoSwitchDebounceId = 0;
+        this._lastNetworkKey = null;
     }
 
     enable() {
@@ -277,6 +283,10 @@ export default class UfwSwitcherExtension extends Extension {
                     this._indicator?.refresh();
             });
         this._restartTimer();
+
+        this._autoSwitchSettingId = this._settings.connect('changed::auto-switch',
+            () => this._syncAutoSwitch());
+        this._syncAutoSwitch();
 
         Gio.DBusProxy.new_for_bus(
             Gio.BusType.SYSTEM,
@@ -305,6 +315,130 @@ export default class UfwSwitcherExtension extends Extension {
             });
     }
 
+    // --- Network auto-switch -------------------------------------------
+
+    _syncAutoSwitch() {
+        const want = this._settings.get_boolean('auto-switch');
+        if (want && !this._nmClient)
+            this._setupNetworkMonitor();
+        else if (!want)
+            this._teardownNetworkMonitor();
+    }
+
+    async _setupNetworkMonitor() {
+        let NM;
+        try {
+            NM = (await import('gi://NM?version=1.0')).default;
+        } catch (e) {
+            logError(e, 'UFW Switcher: NetworkManager not available');
+            return;
+        }
+        // Extension may have been disabled while importing
+        if (!this._enabled || this._nmClient)
+            return;
+        try {
+            this._nmClient = NM.Client.new(null);
+        } catch (e) {
+            logError(e, 'UFW Switcher: cannot connect to NetworkManager');
+            return;
+        }
+        this._lastNetworkKey = null;
+        this._nmActiveId = this._nmClient.connect('connection-active',
+            () => this._onNetworkChanged());
+        this._nmRemovedId = this._nmClient.connect('connection-removed',
+            () => this._onNetworkChanged());
+        this._onNetworkChanged();
+    }
+
+    _teardownNetworkMonitor() {
+        if (this._autoSwitchDebounceId) {
+            GLib.source_remove(this._autoSwitchDebounceId);
+            this._autoSwitchDebounceId = 0;
+        }
+        if (this._nmClient) {
+            this._nmClient.disconnect(this._nmActiveId);
+            this._nmClient.disconnect(this._nmRemovedId);
+            this._nmClient = null;
+        }
+        this._nmActiveId = 0;
+        this._nmRemovedId = 0;
+        this._lastNetworkKey = null;
+    }
+
+    // Current primary network: prefer Wi-Fi over wired, skip VPN.
+    _currentNetwork() {
+        if (!this._nmClient)
+            return null;
+        const active = this._nmClient.get_active_connections() || [];
+        let best = null;
+        for (const ac of active) {
+            const conn = ac.get_connection();
+            if (!conn)
+                continue;
+            const sConn = conn.get_setting_connection();
+            if (!sConn)
+                continue;
+            const type = sConn.get_connection_type();
+            let name = sConn.get_id();
+            if (type === '802-11-wireless') {
+                const sWifi = conn.get_setting_wireless();
+                const ssid = sWifi?.get_ssid();
+                const bytes = ssid?.get_data();
+                if (bytes && bytes.length)
+                    name = new TextDecoder().decode(bytes);
+            } else if (type !== '802-3-ethernet') {
+                continue;
+            }
+            best = {uuid: sConn.get_uuid(), name};
+            if (type === '802-11-wireless')
+                break;
+        }
+        return best;
+    }
+
+    _onNetworkChanged() {
+        if (this._autoSwitchDebounceId)
+            GLib.source_remove(this._autoSwitchDebounceId);
+        this._autoSwitchDebounceId = GLib.timeout_add_seconds(
+            GLib.PRIORITY_DEFAULT, 2, () => {
+                this._autoSwitchDebounceId = 0;
+                this._applyNetworkProfile();
+                return GLib.SOURCE_REMOVE;
+            });
+    }
+
+    _applyNetworkProfile() {
+        const net = this._currentNetwork();
+        // No network: leave the firewall as it is
+        if (!net)
+            return;
+        if (net.uuid === this._lastNetworkKey)
+            return;
+        this._lastNetworkKey = net.uuid;
+
+        let map = {};
+        try {
+            map = JSON.parse(this._settings.get_string('network-map'));
+        } catch (e) {
+            map = {};
+        }
+        const mapped = map[net.uuid];
+        const target = mapped ?? 'public';
+        if (target === this._settings.get_string('mode'))
+            return;
+
+        this._indicator?.setMode(target);
+        if (mapped) {
+            Main.notify('UFW Switcher',
+                _('Profile switched to %s (network: %s)').format(
+                    _(modeInfo(target).label), net.name));
+        } else {
+            Main.notify('UFW Switcher',
+                _('Unknown network “%s” — switched to Public. Map it in Preferences.')
+                    .format(net.name));
+        }
+    }
+
     _restartTimer() {
         if (this._timerId) {
             GLib.source_remove(this._timerId);
@@ -320,6 +454,12 @@ export default class UfwSwitcherExtension extends Extension {
 
     disable() {
         this._enabled = false;
+
+        if (this._autoSwitchSettingId) {
+            this._settings?.disconnect(this._autoSwitchSettingId);
+            this._autoSwitchSettingId = 0;
+        }
+        this._teardownNetworkMonitor();
 
         if (this._timerId) {
             GLib.source_remove(this._timerId);

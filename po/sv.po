@@ -176,3 +176,24 @@ msgstr "Lägg till regel"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Tillämpa profilen ”%s” nu"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Automatiskt profilbyte efter nätverk"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Tillämpa automatiskt matchande profil när nätverket ändras"
+
+msgid "Network Mapping"
+msgstr "Nätverkstilldelning"
+
+msgid "Not mapped"
+msgstr "Ej tilldelad"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profil bytt till %s (nätverk: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Okänt nätverk ”%s” — bytte till Offentlig. Tilldela det i Inställningar."
+
+msgid "No saved networks found"
+msgstr "Inga sparade nätverk hittades"

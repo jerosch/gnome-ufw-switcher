@@ -176,3 +176,24 @@ msgstr "Προσθήκη κανόνα"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Εφαρμογή προφίλ «%s» τώρα"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Αυτόματη εναλλαγή προφίλ ανά δίκτυο"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Εφαρμογή του κατάλληλου προφίλ αυτόματα όταν αλλάζει το δίκτυο"
+
+msgid "Network Mapping"
+msgstr "Αντιστοίχιση δικτύων"
+
+msgid "Not mapped"
+msgstr "Χωρίς αντιστοίχιση"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Το προφίλ άλλαξε σε %s (δίκτυο: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Άγνωστο δίκτυο «%s» — αλλαγή σε Δημόσιο. Αντιστοίχισέ το στις Προτιμήσεις."
+
+msgid "No saved networks found"
+msgstr "Δεν βρέθηκαν αποθηκευμένα δίκτυα"

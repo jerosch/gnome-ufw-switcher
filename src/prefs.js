@@ -74,6 +74,14 @@ function loadProfile(settings, mode) {
     }
 }
 
+function loadNetworkMap(settings) {
+    try {
+        return JSON.parse(settings.get_string('network-map')) ?? {};
+    } catch (e) {
+        return {};
+    }
+}
+
 function saveProfile(settings, mode, profile) {
     settings.set_string(`profile-${mode}`, JSON.stringify(profile));
 }
@@ -335,6 +343,91 @@ export default class UfwSwitcherPrefs {
             subtitle: _('Rule changes on the profile pages only take effect via “Apply Profile”. Every firewall change requires PolicyKit authorization.'),
         }));
         generalPage.add(hintGroup);
+
+        // --- Network auto-switch ---
+        const autoGroup = new Adw.PreferencesGroup({
+            title: _('Network Mapping'),
+            description: _('Automatically apply the matching profile when the network changes'),
+        });
+
+        const autoSwitchRow = new Adw.SwitchRow({
+            title: _('Auto-switch Profile by Network'),
+            active: settings.get_boolean('auto-switch'),
+        });
+        autoSwitchRow.connect('notify::active', () => {
+            settings.set_boolean('auto-switch', autoSwitchRow.active);
+        });
+        autoGroup.add(autoSwitchRow);
+        generalPage.add(autoGroup);
+
+        // Populate one mapping row per saved Wi-Fi/wired connection.
+        import('gi://NM?version=1.0').then(mod => {
+            const NM = mod.default;
+            let conns = [];
+            try {
+                conns = NM.Client.new(null).get_connections() ?? [];
+            } catch (e) {
+                return;
+            }
+            const map = loadNetworkMap(settings);
+            const seen = new Set();
+            const entries = [['', _('Not mapped')],
+                ...MODES.map(m => [m.id, m.label])];
+            const rows = [];
+            for (const conn of conns) {
+                let sConn;
+                try {
+                    sConn = conn.get_setting_connection();
+                } catch (e) {
+                    continue;
+                }
+                if (!sConn)
+                    continue;
+                const type = sConn.get_connection_type();
+                let name = sConn.get_id();
+                if (type === '802-11-wireless') {
+                    let sWifi = null;
+                    try {
+                        sWifi = conn.get_setting_wireless();
+                    } catch (e) {
+                        // keep connection id
+                    }
+                    const bytes = sWifi?.get_ssid()?.get_data();
+                    if (bytes && bytes.length)
+                        name = new TextDecoder().decode(bytes);
+                } else if (type !== '802-3-ethernet') {
+                    continue;
+                }
+                const uuid = sConn.get_uuid();
+                if (seen.has(uuid))
+                    continue;
+                seen.add(uuid);
+
+                const row = combo(entries, map[uuid] ?? '');
+                row.title = name;
+                row.subtitle = uuid;
+                row.connect('notify::selected-item', () => {
+                    const val = comboVal(row);
+                    const m = loadNetworkMap(settings);
+                    if (val)
+                        m[uuid] = val;
+                    else
+                        delete m[uuid];
+                    settings.set_string('network-map', JSON.stringify(m));
+                });
+                rows.push(row);
+            }
+            if (rows.length === 0) {
+                autoGroup.add(new Adw.ActionRow({
+                    title: _('No saved networks found'),
+                }));
+            } else {
+                for (const row of rows)
+                    autoGroup.add(row);
+            }
+        }).catch(() => {
+            // NetworkManager unavailable — mapping UI stays switch-only
+        });
 
         function refreshStatus() {
             dbusCall('GetStatus', null)

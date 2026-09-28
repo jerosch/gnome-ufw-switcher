@@ -57,4 +57,11 @@ T = [
     "Reguli",
     "Adaugă regulă",
     "Aplică profilul „%s” acum",
+    "Comutare automată a profilului în funcție de rețea",
+    "Aplică automat profilul potrivit când rețeaua se schimbă",
+    "Cartografierea rețelelor",
+    "Necartografiat",
+    "Profil comutat la %s (rețea: %s)",
+    "Rețea necunoscută „%s” — comutat la Public. Carteaz-o în Preferințe.",
+    "Nu s-au găsit rețele salvate",
 ]

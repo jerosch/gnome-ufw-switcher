@@ -57,4 +57,11 @@ T = [
     "Reguły",
     "Dodaj regułę",
     "Zastosuj profil „%s” teraz",
+    "Automatyczna zmiana profilu według sieci",
+    "Automatyczne stosowanie pasującego profilu po zmianie sieci",
+    "Mapowanie sieci",
+    "Niezmapowane",
+    "Zmieniono profil na %s (sieć: %s)",
+    "Nieznana sieć „%s” — przełączono na Publiczny. Przypisz ją w Preferencjach.",
+    "Nie znaleziono zapisanych sieci",
 ]

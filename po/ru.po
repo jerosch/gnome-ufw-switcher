@@ -176,3 +176,24 @@ msgstr "Добавить правило"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Применить профиль «%s» сейчас"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Автоматическое переключение профиля по сети"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Автоматически применять соответствующий профиль при смене сети"
+
+msgid "Network Mapping"
+msgstr "Сопоставление сетей"
+
+msgid "Not mapped"
+msgstr "Не сопоставлена"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Профиль переключён на %s (сеть: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Неизвестная сеть «%s» — переключено на Публичный. Сопоставьте её в Параметрах."
+
+msgid "No saved networks found"
+msgstr "Сохранённые сети не найдены"

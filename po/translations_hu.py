@@ -57,4 +57,11 @@ T = [
     "Szabályok",
     "Szabály hozzáadása",
     "A(z) „%s” profil alkalmazása most",
+    "Profil automatikus váltása hálózat szerint",
+    "A megfelelő profil automatikus alkalmazása hálózatváltáskor",
+    "Hálózatleképezés",
+    "Nincs leképezve",
+    "Profil váltva: %s (hálózat: %s)",
+    "Ismeretlen hálózat „%s” — Public-ra váltva. Képezte le a Beállításokban.",
+    "Nincsenek mentett hálózatok",
 ]

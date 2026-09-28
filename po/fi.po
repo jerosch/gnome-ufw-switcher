@@ -176,3 +176,24 @@ msgstr "Lisää sääntö"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Ota profiili ”%s” käyttöön nyt"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Profiilin automaattinen vaihto verkon mukaan"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Käytä automaattisesti sopivaa profiilia verkon vaihtuessa"
+
+msgid "Network Mapping"
+msgstr "Verkkojen kartoitus"
+
+msgid "Not mapped"
+msgstr "Ei kartoitettu"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profiili vaihdettu: %s (verkko: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Tuntematon verkko ”%s” — vaihdettu julkiseen. Kartoita se asetuksissa."
+
+msgid "No saved networks found"
+msgstr "Tallennettuja verkkoja ei löytynyt"

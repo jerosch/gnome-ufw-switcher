@@ -176,3 +176,24 @@ msgstr "Pridať pravidlo"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Aplikovať profil „%s“ teraz"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Automatické prepnutie profilu podľa siete"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Pri zmene siete automaticky použiť zodpovedajúci profil"
+
+msgid "Network Mapping"
+msgstr "Mapovanie sietí"
+
+msgid "Not mapped"
+msgstr "Nemapované"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profil prepnutý na %s (sieť: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Neznáma sieť „%s“ — prepnuté na Verejný. Namapujte ju v Predvoľbách."
+
+msgid "No saved networks found"
+msgstr "Nenašli sa žiadne uložené siete"

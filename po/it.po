@@ -176,3 +176,24 @@ msgstr "Aggiungi regola"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Applica il profilo \"%s\" ora"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Cambio automatico del profilo in base alla rete"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Applica automaticamente il profilo corrispondente al cambio di rete"
+
+msgid "Network Mapping"
+msgstr "Corrispondenza reti"
+
+msgid "Not mapped"
+msgstr "Non assegnata"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profilo cambiato in %s (rete: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Rete sconosciuta “%s” — passaggio a Pubblico. Assegnala nelle Preferenze."
+
+msgid "No saved networks found"
+msgstr "Nessuna rete salvata trovata"

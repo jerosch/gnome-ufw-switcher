@@ -57,4 +57,11 @@ T = [
     "Regler",
     "Lägg till regel",
     "Tillämpa profilen ”%s” nu",
+    "Automatiskt profilbyte efter nätverk",
+    "Tillämpa automatiskt matchande profil när nätverket ändras",
+    "Nätverkstilldelning",
+    "Ej tilldelad",
+    "Profil bytt till %s (nätverk: %s)",
+    "Okänt nätverk ”%s” — bytte till Offentlig. Tilldela det i Inställningar.",
+    "Inga sparade nätverk hittades",
 ]

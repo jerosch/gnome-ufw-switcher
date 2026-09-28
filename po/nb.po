@@ -176,3 +176,24 @@ msgstr "Legg til regel"
 
 msgid "Apply “%s” Profile Now"
 msgstr "Bruk profilen «%s» nå"
+
+msgid "Auto-switch Profile by Network"
+msgstr "Automatisk profilbytte etter nettverk"
+
+msgid "Automatically apply the matching profile when the network changes"
+msgstr "Bruk den matchende profilen automatisk når nettverket endres"
+
+msgid "Network Mapping"
+msgstr "Nettverkstilknytning"
+
+msgid "Not mapped"
+msgstr "Ikke tilknyttet"
+
+msgid "Profile switched to %s (network: %s)"
+msgstr "Profil byttet til %s (nettverk: %s)"
+
+msgid "Unknown network “%s” — switched to Public. Map it in Preferences."
+msgstr "Ukjent nettverk «%s» — byttet til Offentlig. Knytt det til i Innstillinger."
+
+msgid "No saved networks found"
+msgstr "Ingen lagrede nettverk funnet"
