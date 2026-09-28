@@ -6,5 +6,5 @@
   "url": "https://github.com/jerosch/gnome-ufw-switcher",
   "settings-schema": "org.gnome.shell.extensions.ufw-switcher",
   "license": "GPL-2.0-or-later",
-  "version-name": "1.0.0"
+  "version-name": "1.1.0"
 }

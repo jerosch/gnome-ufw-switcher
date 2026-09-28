@@ -6,7 +6,7 @@
 # make enable / disable / uninstall
 
 UUID       := ufw-switcher@jerosch.github.io
-VERSION    := 1.0.0
+VERSION    := 1.1.0
 EXT_DIR    := $(HOME)/.local/share/gnome-shell/extensions/$(UUID)
 DAEMON_DIR := /usr/lib/gnome-ufw-switcher
 
