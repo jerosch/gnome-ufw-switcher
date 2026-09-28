@@ -1,7 +1,7 @@
 {
   "uuid": "ufw-switcher@jerosch.github.io",
   "name": "UFW Switcher",
-  "description": "Firewall (ufw) schnell ein-/ausschalten und zwischen Profilen (Zuhause, Büro, Öffentlich) wechseln. Regeln in den Einstellungen bearbeiten.",
+  "description": "Toggle the ufw firewall and switch between location profiles (Home, Office, Public). Edit rules in the preferences window.",
   "shell-version": ["50"],
   "url": "https://github.com/jerosch/gnome-ufw-switcher",
   "settings-schema": "org.gnome.shell.extensions.ufw-switcher",
