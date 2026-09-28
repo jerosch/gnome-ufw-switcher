@@ -5,7 +5,7 @@
 # make install        → beides + Extension aktivieren
 # make enable / disable / uninstall
 
-UUID       := ufw-switcher@schneiderr.dev
+UUID       := ufw-switcher@jerosch.github.io
 EXT_DIR    := $(HOME)/.local/share/gnome-shell/extensions/$(UUID)
 DAEMON_DIR := /usr/lib/gnome-ufw-switcher
 

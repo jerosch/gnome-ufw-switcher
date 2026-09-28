@@ -47,11 +47,11 @@ sudo make install-daemon
 
 # 2) Install extension into user directory + enable
 make install-user
-gnome-extensions enable ufw-switcher@schneiderr.dev
+gnome-extensions enable ufw-switcher@jerosch.github.io
 ```
 
 The extension ends up in
-`~/.local/share/gnome-shell/extensions/ufw-switcher@schneiderr.dev`.
+`~/.local/share/gnome-shell/extensions/ufw-switcher@jerosch.github.io`.
 
 ## Usage
 
@@ -86,7 +86,7 @@ To add or update a language:
    the same order as `MSGIDS` in `po/generate.py`
    (see existing files as template).
 2. Run `python3 po/generate.py` — writes `po/<lang>.po` and compiles
-   `locale/<lang>/LC_MESSAGES/ufw-switcher@schneiderr.dev.mo`.
+   `locale/<lang>/LC_MESSAGES/ufw-switcher@jerosch.github.io.mo`.
 3. `make install-user`
 
 Contributions welcome.

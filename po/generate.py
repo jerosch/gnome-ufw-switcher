@@ -2,13 +2,13 @@
 """Generate .po files and compiled .mo catalogs for all supported languages.
 
 Usage: python3 po/generate.py
-Writes: po/<lang>.po and locale/<lang>/LC_MESSAGES/ufw-switcher@schneiderr.dev.mo
+Writes: po/<lang>.po and locale/<lang>/LC_MESSAGES/ufw-switcher@jerosch.github.io.mo
 """
 import os
 import subprocess
 import sys
 
-DOMAIN = "ufw-switcher@schneiderr.dev"
+DOMAIN = "ufw-switcher@jerosch.github.io"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PO_DIR = os.path.join(ROOT, "po")
 LOCALE_DIR = os.path.join(ROOT, "locale")

@@ -1,5 +1,5 @@
 {
-  "uuid": "ufw-switcher@schneiderr.dev",
+  "uuid": "ufw-switcher@jerosch.github.io",
   "name": "UFW Switcher",
   "description": "Firewall (ufw) schnell ein-/ausschalten und zwischen Profilen (Zuhause, Büro, Öffentlich) wechseln. Regeln in den Einstellungen bearbeiten.",
   "shell-version": ["50"],

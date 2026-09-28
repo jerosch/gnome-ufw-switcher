@@ -8,7 +8,7 @@ import {bindtextdomain, dgettext} from 'gettext';
 const DBUS_NAME = 'org.gnome.UfwSwitcher';
 const DBUS_PATH = '/org/gnome/UfwSwitcher';
 const DBUS_IFACE = 'org.gnome.UfwSwitcher';
-const DOMAIN = 'ufw-switcher@schneiderr.dev';
+const DOMAIN = 'ufw-switcher@jerosch.github.io';
 
 function _(msgid) {
     return dgettext(DOMAIN, msgid);

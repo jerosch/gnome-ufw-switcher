@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 ufw_switcherd — privilegierter D-Bus-Dienst für die GNOME-Erweiterung
-"UFW Switcher" (ufw-switcher@schneiderr.dev).
+"UFW Switcher" (ufw-switcher@jerosch.github.io).
 
 Stellt die Firewall (ufw) über den System-Bus bereit:
   org.gnome.UfwSwitcher.GetStatus()      -> s   (JSON, keine Auth)
