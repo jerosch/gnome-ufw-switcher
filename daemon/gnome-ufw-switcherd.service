@@ -1,5 +1,5 @@
 [Unit]
-Description=UFW Switcher — privilegierter Firewall-Hilfsdienst (D-Bus: org.gnome.UfwSwitcher)
+Description=UFW Switcher — privileged firewall helper service (D-Bus: org.gnome.UfwSwitcher)
 Documentation=https://github.com/jerosch/gnome-ufw-switcher
 After=dbus.service
 

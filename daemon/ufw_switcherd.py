@@ -1,17 +1,16 @@
 #!/usr/bin/python3
 """
-ufw_switcherd — privilegierter D-Bus-Dienst für die GNOME-Erweiterung
+ufw_switcherd — privileged D-Bus service for the GNOME extension
 "UFW Switcher" (ufw-switcher@jerosch.github.io).
 
-Stellt die Firewall (ufw) über den System-Bus bereit:
-  org.gnome.UfwSwitcher.GetStatus()      -> s   (JSON, keine Auth)
+Exposes the firewall (ufw) over the system bus:
+  org.gnome.UfwSwitcher.GetStatus()      -> s   (JSON, no auth)
   org.gnome.UfwSwitcher.SetEnabled(b)            (Polkit: modify)
   org.gnome.UfwSwitcher.ApplyProfile(s)          (Polkit: modify)
   org.gnome.UfwSwitcher.Changed(s)       signal
 
-Der Dienst wird per D-Bus-Aktivierung als root gestartet. Schreibende
-Methoden erfordern eine Polkit-Autorisierung (Action
-org.gnome.ufw-switcher.modify, Standard: auth_admin).
+The service runs as root (systemd unit). Write methods require a Polkit
+authorization (action org.gnome.ufw-switcher.modify, default: auth_admin).
 """
 
 import json
@@ -58,7 +57,7 @@ class Error(Exception):
 
 
 def run_ufw(args):
-    """ufw ohne Shell aufrufen; wirft Error bei Fehlschlag."""
+    """Run ufw without a shell; raise Error on failure."""
     try:
         proc = subprocess.run(
             [UFW_BIN, *args],
@@ -67,12 +66,12 @@ def run_ufw(args):
             timeout=30,
         )
     except (OSError, subprocess.TimeoutExpired) as exc:
-        raise Error("org.gnome.UfwSwitcher.UfwFailed", f"ufw nicht ausführbar: {exc}")
+        raise Error("org.gnome.UfwSwitcher.UfwFailed", f"cannot run ufw: {exc}")
     if proc.returncode != 0:
         msg = (proc.stderr or proc.stdout or "").strip()
         raise Error(
             "org.gnome.UfwSwitcher.UfwFailed",
-            f"ufw {' '.join(args)} fehlgeschlagen: {msg}",
+            f"ufw {' '.join(args)} failed: {msg}",
         )
     return proc
 
@@ -85,14 +84,14 @@ def get_status():
 
 
 def _proc_start_time(pid):
-    """starttime aus /proc/<pid>/stat (Feld 22, TOCTOU-Absicherung für Polkit)."""
+    """starttime from /proc/<pid>/stat (field 22, TOCTOU guard for Polkit)."""
     with open(f"/proc/{pid}/stat", "r", encoding="utf-8") as f:
         after = f.read().rsplit(")", 1)[1].split()
     return int(after[19])
 
 
 def check_authorization(conn, invocation):
-    """Polkit-Check für den Aufrufer. True wenn autorisiert."""
+    """Polkit check for the caller. True if authorized."""
     sender = invocation.get_sender()
     try:
         res = conn.call_sync(
@@ -127,55 +126,54 @@ def check_authorization(conn, invocation):
             Polkit.CheckAuthorizationFlags.ALLOW_USER_INTERACTION, None
         )
         print(
-            f"Polkit-Check: sender={sender} pid={pid} uid={uid} "
+            f"Polkit check: sender={sender} pid={pid} uid={uid} "
             f"start={start_time} -> authorized={result.get_is_authorized()} "
             f"dismissed={result.get_dismissed()} challenge={result.get_is_challenge()}",
             flush=True,
         )
         return result.get_is_authorized()
     except (GLib.Error, OSError, ValueError) as exc:
-        print(f"Polkit-Prüfung fehlgeschlagen/abgebrochen: {exc}", flush=True)
+        print(f"Polkit check failed/cancelled: {exc}", flush=True)
         return False
 
 
 def apply_profile(profile_json):
-    """Profil (JSON) vollständig auf ufw anwenden.
+    """Apply a profile (JSON) to ufw completely.
 
-    ACHTUNG: überschreibt alle bestehenden ufw-Regeln
-    (ufw --force reset). Die Profile in den GNOME-Einstellungen sind
-    die einzige Quelle der Wahrheit.
+    WARNING: overwrites all existing ufw rules (ufw --force reset).
+    The profiles in the GNOME settings are the single source of truth.
     """
     try:
         profile = json.loads(profile_json)
     except (ValueError, TypeError) as exc:
-        raise Error("org.gnome.UfwSwitcher.BadProfile", f"Ungültiges Profil-JSON: {exc}")
+        raise Error("org.gnome.UfwSwitcher.BadProfile", f"invalid profile JSON: {exc}")
 
     defaults = profile.get("defaults", {})
     incoming = defaults.get("incoming", "deny")
     outgoing = defaults.get("outgoing", "allow")
     if incoming not in ("deny", "allow", "reject"):
-        raise Error("org.gnome.UfwSwitcher.BadProfile", f"Ungültige eingehende Richtlinie: {incoming}")
+        raise Error("org.gnome.UfwSwitcher.BadProfile", f"invalid incoming policy: {incoming}")
     if outgoing not in ("deny", "allow"):
-        raise Error("org.gnome.UfwSwitcher.BadProfile", f"Ungültige ausgehende Richtlinie: {outgoing}")
+        raise Error("org.gnome.UfwSwitcher.BadProfile", f"invalid outgoing policy: {outgoing}")
 
-    # Regel-Argumente vorab validieren, damit ein Fehler nicht halb
-    # angewendet wird.
+    # Validate all rule arguments up front so a bad rule cannot leave the
+    # firewall half-applied.
     rule_args = []
     for rule in profile.get("rules", []):
         action = rule.get("action", "allow")
         if action not in ("allow", "deny", "reject"):
-            raise Error("org.gnome.UfwSwitcher.BadProfile", f"Ungültige Aktion: {action}")
+            raise Error("org.gnome.UfwSwitcher.BadProfile", f"invalid action: {action}")
         direction = rule.get("direction", "in")
         if direction not in ("in", "out"):
-            raise Error("org.gnome.UfwSwitcher.BadProfile", f"Ungültige Richtung: {direction}")
+            raise Error("org.gnome.UfwSwitcher.BadProfile", f"invalid direction: {direction}")
         proto = rule.get("proto", "")
         if proto not in ("", "tcp", "udp"):
-            raise Error("org.gnome.UfwSwitcher.BadProfile", f"Ungültiges Protokoll: {proto}")
+            raise Error("org.gnome.UfwSwitcher.BadProfile", f"invalid protocol: {proto}")
         for field in ("interface", "from", "to", "port", "comment"):
             if not isinstance(rule.get(field, ""), str):
-                raise Error("org.gnome.UfwSwitcher.BadProfile", f"{field} muss ein String sein")
+                raise Error("org.gnome.UfwSwitcher.BadProfile", f"{field} must be a string")
 
-        # Reihenfolge laut ufw(8):
+        # Order per ufw(8):
         # allow|deny|reject [in|out [on IFACE]] [proto P] [from SRC [port P]]
         #                   [to DST [port P]] [comment TEXT]
         args = [action]
@@ -193,7 +191,7 @@ def apply_profile(profile_json):
             args += ["comment", comment]
         rule_args.append(args)
 
-    # Alles zurücksetzen, dann deterministisch neu aufbauen.
+    # Reset everything, then rebuild deterministically.
     run_ufw(["--force", "reset"])
     run_ufw(["default", incoming, "incoming"])
     run_ufw(["default", outgoing, "outgoing"])
@@ -209,13 +207,13 @@ def apply_profile(profile_json):
 class Service:
     def __init__(self):
         self.loop = GLib.MainLoop()
-        # Bei D-Bus-Aktivierung gehört der Name dem Starter-Connection —
-        # diesen verwenden, nicht eine frische SYSTEM-Verbindung.
+        # With D-Bus activation the name belongs to the starter connection —
+        # use it instead of opening a fresh SYSTEM connection.
         if os.environ.get("DBUS_STARTER_BUS_TYPE") == "system":
             self.conn = Gio.bus_get_sync(Gio.BusType.STARTER, None)
         else:
             self.conn = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
-            # Manueller Start: Name explizit übernehmen
+            # Manual start: take the name explicitly
             Gio.bus_own_name(
                 Gio.BusType.SYSTEM, BUS_NAME,
                 Gio.BusNameOwnerFlags.REPLACE, None, None, None
@@ -236,7 +234,7 @@ class Service:
             status = json.dumps(get_status())
             self.conn.emit_signal(None, OBJ_PATH, IFACE, "Changed", GLib.Variant("(s)", (status,)))
         except Error as exc:
-            print(f"Status nach Änderung nicht lesbar: {exc}", flush=True)
+            print(f"cannot read status after change: {exc}", flush=True)
 
     def _handle_call(self, conn, sender, path, iface, method, params, invocation):
         try:
@@ -251,7 +249,7 @@ class Service:
                     self._fail(
                         invocation,
                         "org.gnome.UfwSwitcher.NotAuthorized",
-                        "Autorisierung verweigert oder abgebrochen.",
+                        "Authorization denied or cancelled.",
                     )
                     return
                 run_ufw(["--force", "enable"] if enabled else ["disable"])
@@ -263,7 +261,7 @@ class Service:
                     self._fail(
                         invocation,
                         "org.gnome.UfwSwitcher.NotAuthorized",
-                        "Autorisierung verweigert oder abgebrochen.",
+                        "Authorization denied or cancelled.",
                     )
                     return
                 apply_profile(profile)
@@ -273,7 +271,7 @@ class Service:
                 self._fail(
                     invocation,
                     "org.freedesktop.DBus.Error.UnknownMethod",
-                    f"Unbekannte Methode: {method}",
+                    f"Unknown method: {method}",
                 )
         except Error as exc:
             self._fail(invocation, exc.code, str(exc))
@@ -290,7 +288,7 @@ def main():
     try:
         service = Service()
     except GLib.Error as exc:
-        print(f"Kann D-Bus-Namen nicht registrieren: {exc.message}", file=sys.stderr)
+        print(f"Cannot register D-Bus name: {exc.message}", file=sys.stderr)
         return 1
     service.run()
     return 0

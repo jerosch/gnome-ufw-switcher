@@ -30,14 +30,11 @@ build:
 	python3 po/generate.py
 	cp -r locale build/
 
-# extensions.gnome.org expects a zip with a top-level folder named after the UUID
+# extensions.gnome.org expects the extension files at the root of the zip
 package: build
-	rm -rf build/pkg
-	mkdir -p build/pkg/$(UUID)
-	cp build/metadata.json build/extension.js build/prefs.js build/stylesheet.css build/pkg/$(UUID)/
-	cp -r build/schemas build/pkg/$(UUID)/
-	cp -r build/locale build/pkg/$(UUID)/
-	cd build/pkg && rm -f ../../$(UUID).v$(VERSION).shell-extension.zip && zip -qr ../../$(UUID).v$(VERSION).shell-extension.zip $(UUID)
+	rm -f $(UUID).v$(VERSION).shell-extension.zip
+	cd build && zip -qr ../$(UUID).v$(VERSION).shell-extension.zip \
+		metadata.json extension.js prefs.js stylesheet.css schemas locale
 	@echo "Release-Paket: $(UUID).v$(VERSION).shell-extension.zip"
 
 install-user: build
