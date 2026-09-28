@@ -278,9 +278,11 @@ export default class UfwSwitcherExtension extends Extension {
         super(metadata);
         this.dbusProxy = null;
         this._changedId = 0;
+        this._enabled = false;
     }
 
     enable() {
+        this._enabled = true;
         this._indicator = new FirewallIndicator(this);
         Main.panel.statusArea.quickSettings.addExternalIndicator(this._indicator);
 
@@ -293,6 +295,9 @@ export default class UfwSwitcherExtension extends Extension {
             DBUS_IFACE,
             null,
             (source, res) => {
+                // Extension may have been disabled while connecting
+                if (!this._enabled)
+                    return;
                 try {
                     this.dbusProxy = Gio.DBusProxy.new_for_bus_finish(res);
                 } catch (e) {
@@ -309,6 +314,7 @@ export default class UfwSwitcherExtension extends Extension {
     }
 
     disable() {
+        this._enabled = false;
         this._indicator?.destroy();
         this._indicator = null;
 
