@@ -365,12 +365,16 @@ export default class UfwSwitcherExtension extends Extension {
         this._lastNetworkKey = null;
     }
 
-    // Current primary network: prefer Wi-Fi over wired, skip VPN.
+    // Current primary network: the connection carrying the default route
+    // (has an IPv4 gateway). Ties broken by Wi-Fi over wired. VPN and
+    // bridges are ignored.
     _currentNetwork() {
         if (!this._nmClient)
             return null;
         const active = this._nmClient.get_active_connections() || [];
         let best = null;
+        let bestGw = false;
+        let bestWifi = false;
         for (const ac of active) {
             const conn = ac.get_connection();
             if (!conn)
@@ -379,19 +383,26 @@ export default class UfwSwitcherExtension extends Extension {
             if (!sConn)
                 continue;
             const type = sConn.get_connection_type();
+            const isWifi = type === '802-11-wireless';
+            if (!isWifi && type !== '802-3-ethernet')
+                continue;
             let name = sConn.get_id();
-            if (type === '802-11-wireless') {
+            if (isWifi) {
                 const sWifi = conn.get_setting_wireless();
                 const ssid = sWifi?.get_ssid();
                 const bytes = ssid?.get_data();
                 if (bytes && bytes.length)
                     name = new TextDecoder().decode(bytes);
-            } else if (type !== '802-3-ethernet') {
-                continue;
             }
-            best = {uuid: sConn.get_uuid(), name};
-            if (type === '802-11-wireless')
-                break;
+            const ip4 = ac.get_ip4_config();
+            const hasGw = !!(ip4 && ip4.get_gateway());
+            if (!best ||
+                (hasGw && !bestGw) ||
+                (hasGw === bestGw && isWifi && !bestWifi)) {
+                best = {uuid: sConn.get_uuid(), name};
+                bestGw = hasGw;
+                bestWifi = isWifi;
+            }
         }
         return best;
     }
@@ -424,15 +435,22 @@ export default class UfwSwitcherExtension extends Extension {
         }
         const mapped = map[net.uuid];
         const target = mapped ?? 'public';
-        if (target === this._settings.get_string('mode'))
-            return;
+        const current = this._settings.get_string('mode');
+        log(`UFW Switcher auto-switch: network="${net.name}" ` +
+            `mapped=${mapped ?? 'none'} target=${target} current=${current}`);
 
-        this._indicator?.setMode(target);
         if (mapped) {
-            Main.notify('UFW Switcher',
-                _('Profile switched to %s (network: %s)').format(
-                    _(modeInfo(target).label), net.name));
+            if (target !== current) {
+                this._indicator?.setMode(target);
+                Main.notify('UFW Switcher',
+                    _('Profile switched to %s (network: %s)').format(
+                        _(modeInfo(target).label), net.name));
+            }
         } else {
+            // Unknown network: always fall back to Public and tell the user,
+            // even if already on Public, so the mapping hint is visible.
+            if (target !== current)
+                this._indicator?.setMode(target);
             Main.notify('UFW Switcher',
                 _('Unknown network “%s” — switched to Public. Map it in Preferences.')
                     .format(net.name));
