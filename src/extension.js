@@ -19,6 +19,11 @@ const DBUS_NAME = 'org.gnome.UfwSwitcher';
 const DBUS_PATH = '/org/gnome/UfwSwitcher';
 const DBUS_IFACE = 'org.gnome.UfwSwitcher';
 
+// Last evaluated network. Module-level so it survives enable/disable
+// cycles: GNOME re-enables every extension on each screen unlock, and
+// the same network must not notify again after an unlock.
+let lastNetworkKey = null;
+
 const MODES = [
     {id: 'home', label: 'Home', icon: 'user-home-symbolic'},
     {id: 'office', label: 'Office', icon: 'network-server-symbolic'},
@@ -255,10 +260,10 @@ export default class UfwSwitcherExtension extends Extension {
         this._menuOpenedId = 0;
         this._autoSwitchSettingId = 0;
         this._nmClient = null;
-        this._nmActiveId = 0;
+        this._nmAddedId = 0;
         this._nmRemovedId = 0;
         this._autoSwitchDebounceId = 0;
-        this._lastNetworkKey = null;
+        this._confirmCheckId = 0;
     }
 
     enable() {
@@ -319,10 +324,12 @@ export default class UfwSwitcherExtension extends Extension {
 
     _syncAutoSwitch() {
         const want = this._settings.get_boolean('auto-switch');
-        if (want && !this._nmClient)
-            this._setupNetworkMonitor();
-        else if (!want)
+        if (want && !this._nmClient) {
+            this._setupNetworkMonitor().catch(e =>
+                logError(e, 'UFW Switcher: network monitor setup failed'));
+        } else if (!want) {
             this._teardownNetworkMonitor();
+        }
     }
 
     async _setupNetworkMonitor() {
@@ -342,8 +349,10 @@ export default class UfwSwitcherExtension extends Extension {
             logError(e, 'UFW Switcher: cannot connect to NetworkManager');
             return;
         }
-        this._lastNetworkKey = null;
-        this._nmActiveId = this._nmClient.connect('connection-active',
+        // NMClient signals: 'connection-added' fires when a connection
+        // becomes active, 'connection-removed' when it drops. (There is
+        // no 'connection-active' signal.)
+        this._nmAddedId = this._nmClient.connect('connection-added',
             () => this._onNetworkChanged());
         this._nmRemovedId = this._nmClient.connect('connection-removed',
             () => this._onNetworkChanged());
@@ -355,14 +364,17 @@ export default class UfwSwitcherExtension extends Extension {
             GLib.source_remove(this._autoSwitchDebounceId);
             this._autoSwitchDebounceId = 0;
         }
+        if (this._confirmCheckId) {
+            GLib.source_remove(this._confirmCheckId);
+            this._confirmCheckId = 0;
+        }
         if (this._nmClient) {
-            this._nmClient.disconnect(this._nmActiveId);
+            this._nmClient.disconnect(this._nmAddedId);
             this._nmClient.disconnect(this._nmRemovedId);
             this._nmClient = null;
         }
-        this._nmActiveId = 0;
+        this._nmAddedId = 0;
         this._nmRemovedId = 0;
-        this._lastNetworkKey = null;
     }
 
     // Current primary network: the connection carrying the default route
@@ -414,6 +426,17 @@ export default class UfwSwitcherExtension extends Extension {
             GLib.PRIORITY_DEFAULT, 2, () => {
                 this._autoSwitchDebounceId = 0;
                 this._applyNetworkProfile();
+                // IP config and gateway can arrive late after DHCP; verify
+                // the pick once more shortly after. The network-key guard
+                // makes the re-check a no-op when nothing changed.
+                if (this._confirmCheckId)
+                    GLib.source_remove(this._confirmCheckId);
+                this._confirmCheckId = GLib.timeout_add_seconds(
+                    GLib.PRIORITY_DEFAULT, 6, () => {
+                        this._confirmCheckId = 0;
+                        this._applyNetworkProfile();
+                        return GLib.SOURCE_REMOVE;
+                    });
                 return GLib.SOURCE_REMOVE;
             });
     }
@@ -423,9 +446,9 @@ export default class UfwSwitcherExtension extends Extension {
         // No network: leave the firewall as it is
         if (!net)
             return;
-        if (net.uuid === this._lastNetworkKey)
+        if (net.uuid === lastNetworkKey)
             return;
-        this._lastNetworkKey = net.uuid;
+        lastNetworkKey = net.uuid;
 
         let map = {};
         try {
