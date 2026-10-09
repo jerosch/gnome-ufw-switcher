@@ -349,12 +349,14 @@ export default class UfwSwitcherExtension extends Extension {
             logError(e, 'UFW Switcher: cannot connect to NetworkManager');
             return;
         }
-        // NMClient signals: 'connection-added' fires when a connection
-        // becomes active, 'connection-removed' when it drops. (There is
-        // no 'connection-active' signal.)
-        this._nmAddedId = this._nmClient.connect('connection-added',
+        // NMClient signals: 'active-connection-added'/'-removed' fire when
+        // an active connection appears/disappears. (The plain
+        // 'connection-added'/'-removed' signals are about saved connection
+        // PROFILES, not active connections, and never fire on network
+        // switches.)
+        this._nmAddedId = this._nmClient.connect('active-connection-added',
             () => this._onNetworkChanged());
-        this._nmRemovedId = this._nmClient.connect('connection-removed',
+        this._nmRemovedId = this._nmClient.connect('active-connection-removed',
             () => this._onNetworkChanged());
         this._onNetworkChanged();
     }
@@ -446,9 +448,6 @@ export default class UfwSwitcherExtension extends Extension {
         // No network: leave the firewall as it is
         if (!net)
             return;
-        if (net.uuid === lastNetworkKey)
-            return;
-        lastNetworkKey = net.uuid;
 
         let map = {};
         try {
@@ -459,24 +458,23 @@ export default class UfwSwitcherExtension extends Extension {
         const mapped = map[net.uuid];
         const target = mapped ?? 'public';
         const current = this._settings.get_string('mode');
+        const isNewNetwork = net.uuid !== lastNetworkKey;
+        lastNetworkKey = net.uuid;
         log(`UFW Switcher auto-switch: network="${net.name}" ` +
             `mapped=${mapped ?? 'none'} target=${target} current=${current}`);
 
-        if (mapped) {
-            if (target !== current) {
-                this._indicator?.setMode(target);
-                Main.notify('UFW Switcher',
-                    _('Profile switched to %s (network: %s)').format(
-                        _(modeInfo(target).label), net.name));
-            }
-        } else {
-            // Unknown network: always fall back to Public and tell the user,
-            // even if already on Public, so the mapping hint is visible.
-            if (target !== current)
-                this._indicator?.setMode(target);
+        // With auto-switch on, the network mapping is authoritative:
+        // a manual override is re-applied on the next network event.
+        const switched = target !== current;
+        if (switched)
+            this._indicator?.setMode(target);
+        if (switched || (isNewNetwork && !mapped)) {
             Main.notify('UFW Switcher',
-                _('Unknown network “%s” — switched to Public. Map it in Preferences.')
-                    .format(net.name));
+                mapped
+                    ? _('Profile switched to %s (network: %s)').format(
+                        _(modeInfo(target).label), net.name)
+                    : _('Unknown network “%s” — switched to Public. Map it in Preferences.')
+                        .format(net.name));
         }
     }
 
